@@ -1,7 +1,11 @@
+import Button from "../../../atomic/atm.button";
+
 const LoginPage = () => {
   return (
     <main>
-      <h1>Hello World!</h1>
+      <Button variant="primary" disabled={true}>
+        Hello World!
+      </Button>
     </main>
   );
 };
