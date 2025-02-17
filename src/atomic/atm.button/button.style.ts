@@ -18,9 +18,13 @@ export const buttonVariants = tv({
     disabled: {
       true: "opacity-50 cursor-not-allowed",
     },
+    hasIcon: {
+      true: "flex items-center gap-2",
+    },
   },
   defaultVariants: {
     variant: "primary",
     disabled: false,
+    hasIcon: false,
   },
 });
