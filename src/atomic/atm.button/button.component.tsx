@@ -28,11 +28,11 @@ const Button: FC<ButtonProps> = ({
       {...props}
     >
       {icon && iconPosition === "left" && (
-        <span className="w-xs h-xs">{icon}</span>
+        <span className="w-xs h-xs text-inherit fill-current stroke-current">{icon}</span>
       )}
       {children}
       {icon && iconPosition === "right" && (
-        <span className="w-xs h-xs">{icon}</span>
+        <span className="w-xs h-xs text-inherit fill-current stroke-current">{icon}</span>
       )}
     </button>
   );
