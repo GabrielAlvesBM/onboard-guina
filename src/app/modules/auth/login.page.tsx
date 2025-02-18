@@ -1,20 +1,53 @@
-import Text from "../../../atomic/atm.typography";
+import LinkButton from "../../../atomic/atm.linkButton";
 
 const LoginPage = () => {
   return (
-    <main>
-      <Text variant="display">Teste Display</Text>
-      <Text variant="h1">Teste H1</Text>
-      <Text variant="h2">Teste H2</Text>
-      <Text variant="h3">Teste H3</Text>
-      <Text variant="h4">Teste H4</Text>
-      <Text variant="body1">Teste Body1</Text>
-      <Text variant="body2">Teste Body2</Text>
-      <Text variant="inputLabel">Teste InputLabel</Text>
-      <Text variant="inputValue">Teste InputValue</Text>
-      <Text variant="inputCaption">Teste InputCaption</Text>
-      <Text variant="link">Teste Link</Text>
-      <Text variant="linkSmall">Teste LinkSmall</Text>
+    <main className="flex gap-2">
+      <LinkButton
+        to="/auth/login"
+        icon={
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path
+              d="M9.57 5.92969L3.5 11.9997L9.57 18.0697M20.5 11.9997H3.67"
+              stroke-width="1.5"
+              stroke-miterlimit="10"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        }
+      >
+        Login
+      </LinkButton>
+      <LinkButton
+        to="/auth/login"
+        icon={
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path
+              d="M14.43 5.92969L20.5 11.9997L14.43 18.0697M3.5 11.9997H20.33"
+              stroke-width="1.5"
+              stroke-miterlimit="10"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        }
+        iconPosition="right"
+      >
+        Registrar
+      </LinkButton>
     </main>
   );
 };
