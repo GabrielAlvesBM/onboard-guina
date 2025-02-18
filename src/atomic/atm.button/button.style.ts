@@ -16,7 +16,7 @@ export const buttonVariants = tv({
       link: "py-xxxs text-brand-primary-dark hover:underline focus:border-2 focus:border-brand-primary-dark active:text-brand-accessory-magenta",
     },
     disabled: {
-      true: "opacity-50 cursor-not-allowed",
+      true: "opacity-50 pointer-events-none",
     },
     hasIcon: {
       true: "flex flex-row items-center gap-xxs",
