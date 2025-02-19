@@ -1,4 +1,4 @@
-import LinkButton from "../../../atomic/atm.linkButton";
+import LinkButton from "../../../atomic/atm.link-button";
 
 const LoginPage = () => {
   return (
