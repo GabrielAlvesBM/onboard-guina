@@ -13,7 +13,7 @@
   --color-brand-primary-medium: #00d5ad;
   --color-brand-primary-dark: #0b6c54;
   --color-brand-primary-x-dark: #054434;
-  --color-brand-primary-xx-dark: #022b18;
+  --color-brand-primary-2x-dark: #022b18;
 
   --color-brand-accessory-x-light: #e4f9f3;
   --color-brand-accessory-light: #92e8cf;
@@ -29,7 +29,7 @@
   --color-medium: #b5b5b5;
   --color-dark: #626262;
   --color-x-dark: #313131;
-  --color-xx-dark: #121212;
+  --color-2x-dark: #121212;
 
   --color-feedback-success-light: #daf1e2;
   --color-feedback-success-medium: #379559;
