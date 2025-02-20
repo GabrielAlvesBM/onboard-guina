@@ -1,53 +1,50 @@
-import LinkButton from "../../../atomic/atm.link-button";
+import TextInput from "../../../atomic/mol.text-input";
 
 const LoginPage = () => {
+  const icon = (
+    <svg
+      width="14"
+      height="8"
+      viewBox="0 0 14 8"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12.919 0.179688H1.07902C0.119016 0.179688 -0.360984 1.33969 0.319016 2.01969L5.49902 7.19969C6.32902 8.02969 7.67902 8.02969 8.50902 7.19969L10.479 5.22969L13.689 2.01969C14.359 1.33969 13.879 0.179688 12.919 0.179688Z"
+        fill="#313131"
+      />
+    </svg>
+  );
+
   return (
     <main className="flex gap-2">
-      <LinkButton
-        to="/auth/login"
-        icon={
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-          >
-            <path
-              d="M9.57 5.92969L3.5 11.9997L9.57 18.0697M20.5 11.9997H3.67"
-              stroke-width="1.5"
-              stroke-miterlimit="10"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        }
-      >
-        Login
-      </LinkButton>
-      <LinkButton
-        to="/auth/login"
-        icon={
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-          >
-            <path
-              d="M14.43 5.92969L20.5 11.9997L14.43 18.0697M3.5 11.9997H20.33"
-              stroke-width="1.5"
-              stroke-miterlimit="10"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        }
-        iconPosition="right"
-      >
-        Registrar
-      </LinkButton>
+      <TextInput
+        variant="error"
+        placeholder="Nome"
+        label="Nome"
+        icon={icon}
+        caption={{
+          text: "Seu nome tem que ser verificado",
+          status: "error",
+        }}
+        infoIcon="Informe seu nome. ex: Gabriel"
+      />
+
+      <TextInput
+        placeholder="Email"
+        label="Email"
+        caption={{
+          text: "Seu nome foi verificado!",
+          status: "success",
+        }}
+        infoIcon="Informe seu email. ex: Gabriel@gmail.com"
+      />
+
+      <TextInput
+        label="Desativado"
+        variant="disable"
+        placeholder="Desativado"
+      />
     </main>
   );
 };

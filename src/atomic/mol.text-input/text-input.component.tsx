@@ -1,0 +1,87 @@
+import { FC, ReactNode, useState } from "react";
+import { textInputVariants } from "./text-input.style";
+import Caption from "../atm.caption";
+import Text from "../atm.typography";
+import InfoIcon from "../atm.info-icon";
+
+interface CaptionData {
+  text: string;
+  status: "error" | "success";
+}
+
+interface TextInputProps {
+  variant?: "disable" | "error";
+  label?: string;
+  placeholder?: string;
+  icon?: ReactNode;
+  caption?: CaptionData;
+  infoIcon?: string;
+}
+
+const closeSvg = (
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 20 20"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M10 -0.000244141C4.49 -0.000244141 0 4.48976 0 9.99976C0 15.5098 4.49 19.9998 10 19.9998C15.51 19.9998 20 15.5098 20 9.99976C20 4.48976 15.51 -0.000244141 10 -0.000244141ZM13.36 12.2998C13.65 12.5898 13.65 13.0698 13.36 13.3598C13.21 13.5098 13.02 13.5798 12.83 13.5798C12.64 13.5798 12.45 13.5098 12.3 13.3598L10 11.0598L7.7 13.3598C7.55 13.5098 7.36 13.5798 7.17 13.5798C6.98 13.5798 6.79 13.5098 6.64 13.3598C6.50052 13.2186 6.4223 13.0282 6.4223 12.8298C6.4223 12.6313 6.50052 12.4409 6.64 12.2998L8.94 9.99976L6.64 7.69976C6.50052 7.55862 6.4223 7.36819 6.4223 7.16976C6.4223 6.97133 6.50052 6.78089 6.64 6.63976C6.93 6.34976 7.41 6.34976 7.7 6.63976L10 8.93976L12.3 6.63976C12.59 6.34976 13.07 6.34976 13.36 6.63976C13.65 6.92976 13.65 7.40976 13.36 7.69976L11.06 9.99976L13.36 12.2998Z"
+      fill="#626262"
+    />
+  </svg>
+);
+
+const TextInput: FC<TextInputProps> = ({
+  variant,
+  label,
+  placeholder,
+  icon,
+  caption,
+  infoIcon,
+}) => {
+  const [inputValue, setInputValue] = useState("");
+  const [isFocused, setIsFocused] = useState(false);
+
+  return (
+    <div className="flex flex-col items-start gap-3xs w-full">
+      <div className="flex items-center gap-3xs">
+        <label htmlFor={label}>
+          <Text variant="inputLabel">{label}</Text>
+        </label>
+        {infoIcon && <InfoIcon info={infoIcon} />}
+      </div>
+
+      <div className="relative w-full">
+        <input
+          className={textInputVariants({ variant })}
+          type="text"
+          name={label}
+          placeholder={placeholder}
+          value={inputValue}
+          onChange={(event) => setInputValue(event.target.value)}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
+        />
+        <span className="flex items-center absolute inset-y-0 right-2xs">
+          {isFocused && inputValue ? (
+            <button
+              type="button"
+              onMouseDown={(event) => event.preventDefault()}
+              onClick={() => setInputValue("")}
+            >
+              {closeSvg}
+            </button>
+          ) : (
+            icon
+          )}
+        </span>
+      </div>
+
+      {caption && <Caption variant={caption?.status}>{caption.text}</Caption>}
+    </div>
+  );
+};
+
+export default TextInput;
