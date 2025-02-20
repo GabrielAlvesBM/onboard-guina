@@ -1,4 +1,5 @@
 import { FC, ReactNode } from "react";
+import { twMerge } from "tailwind-merge";
 import { captionVariants } from "./caption.style";
 import Text from "../atm.typography";
 import SuccessSvg from "../icons/success-svg";
@@ -12,7 +13,10 @@ interface CaptionProps {
 const Caption: FC<CaptionProps> = ({ variant, children }) => {
   return (
     <span
-      className={`flex items-center gap-3xs ${captionVariants({ variant })}`}
+      className={twMerge(
+        "flex items-center gap-3xs",
+        captionVariants({ variant })
+      )}
     >
       {variant === "error" && <ErrorSvg />}
       {variant === "success" && <SuccessSvg />}

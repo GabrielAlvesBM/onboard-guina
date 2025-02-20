@@ -2,7 +2,7 @@ import TextInput from "../../../atomic/mol.text-input";
 
 const LoginPage = () => {
   return (
-    <main className="flex gap-2">
+    <main className="flex gap-2xs">
       <TextInput
         variant="error"
         placeholder="Nome"

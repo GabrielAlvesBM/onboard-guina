@@ -1,4 +1,5 @@
 import { FC, ReactNode, JSX } from "react";
+import { twMerge } from "tailwind-merge";
 import { typographyVariants } from "./typography.style";
 
 interface TextProps {
@@ -40,9 +41,7 @@ const variantMapping: Record<
 const Text: FC<TextProps> = ({ variant, children, className }) => {
   const Component = variantMapping[variant] || "p";
   return (
-    <Component
-      className={`${typographyVariants({ variant })} ${className || ""}`}
-    >
+    <Component className={twMerge(typographyVariants({ variant }), className)}>
       {children}
     </Component>
   );
