@@ -1,35 +1,24 @@
-import TextInput from "../../../atomic/mol.text-input";
+import PasswordInput from "../../../atomic/mol.password-input";
 
 const LoginPage = () => {
   return (
     <main className="flex gap-2xs">
-      <TextInput
-        variant="error"
-        placeholder="Nome"
-        label="Nome"
-        picker={true}
+      <PasswordInput
+        placeholder="Senha"
+        label="Senha"
         caption={{
-          text: "Seu nome tem que ser verificado",
+          text: "Sua senha está errada",
           status: "error",
         }}
-        infoIcon="Informe seu nome. ex: Gabriel"
+        infoIcon="Deve conter pelo menos 3 caracteres e pelo menos 1 e caracter especial"
       />
-
-      <TextInput
-        placeholder="Email"
-        label="Email"
+      <PasswordInput
+        placeholder="Senha"
+        label="Senha"
         caption={{
-          text: "Seu email foi verificado!",
+          text: "Tudo certo!",
           status: "success",
         }}
-        infoIcon="Informe seu email. ex: Gabriel@gmail.com"
-      />
-
-      <TextInput
-        label="Desativado"
-        variant="disable"
-        placeholder="Desativado"
-        picker={true}
       />
     </main>
   );

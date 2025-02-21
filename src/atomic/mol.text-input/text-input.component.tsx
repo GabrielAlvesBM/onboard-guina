@@ -12,21 +12,25 @@ interface CaptionData {
 }
 
 interface TextInputProps {
+  type?: string;
   variant?: "disable" | "error";
   label?: string;
   placeholder?: string;
   picker?: boolean;
   caption?: CaptionData;
   infoIcon?: string;
+  closeButton?: boolean;
 }
 
 const TextInput: FC<TextInputProps> = ({
+  type,
   variant,
   label,
   placeholder,
   picker,
   caption,
   infoIcon,
+  closeButton = true,
 }) => {
   const [inputValue, setInputValue] = useState("");
   const [isFocused, setIsFocused] = useState(false);
@@ -43,7 +47,7 @@ const TextInput: FC<TextInputProps> = ({
       <div className="relative w-full">
         <input
           className={textInputVariants({ variant })}
-          type="text"
+          type={type}
           name={label}
           placeholder={placeholder}
           value={inputValue}
@@ -56,7 +60,7 @@ const TextInput: FC<TextInputProps> = ({
             variant === "disable" && "opacity-50"
           }`}
         >
-          {isFocused && inputValue ? (
+          {closeButton && isFocused && inputValue ? (
             <button
               className="text-dark"
               type="button"
