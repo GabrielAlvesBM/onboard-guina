@@ -9,6 +9,7 @@ interface CaptionData {
 
 interface PasswordInputProps {
   variant?: "disable" | "error";
+  showVariant?: "outline" | "bold";
   label?: string;
   placeholder?: string;
   caption?: CaptionData;
@@ -18,6 +19,7 @@ interface PasswordInputProps {
 
 const PasswordInput: FC<PasswordInputProps> = ({
   variant,
+  showVariant,
   label,
   placeholder,
   caption,
@@ -41,7 +43,7 @@ const PasswordInput: FC<PasswordInputProps> = ({
         onClick={() => setShowPassword((prev) => !prev)}
         aria-label={showPassword ? "Esconder senha" : "Mostrar senha"}
       >
-        <ShowSvg visible={showPassword} variant="outline" />
+        <ShowSvg visible={showPassword} variant={showVariant} />
       </button>
     </div>
   );

@@ -19,6 +19,7 @@ const LoginPage = () => {
           text: "Tudo certo!",
           status: "success",
         }}
+        showVariant="bold"
       />
     </main>
   );
