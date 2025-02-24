@@ -19,7 +19,7 @@ interface TextInputProps {
   picker?: boolean;
   caption?: CaptionData;
   infoIcon?: string;
-  closeButton?: boolean;
+  clearButton?: boolean;
 }
 
 const TextInput: FC<TextInputProps> = ({
@@ -30,7 +30,7 @@ const TextInput: FC<TextInputProps> = ({
   picker,
   caption,
   infoIcon,
-  closeButton = true,
+  clearButton = true,
 }) => {
   const [inputValue, setInputValue] = useState("");
   const [isFocused, setIsFocused] = useState(false);
@@ -60,7 +60,7 @@ const TextInput: FC<TextInputProps> = ({
             variant === "disable" && "opacity-50"
           }`}
         >
-          {closeButton && isFocused && inputValue ? (
+          {clearButton && isFocused && inputValue ? (
             <button
               className="text-dark"
               type="button"
