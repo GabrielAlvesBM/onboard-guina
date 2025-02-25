@@ -6,17 +6,17 @@ import SuccessSvg from "../icons/success-svg";
 import ErrorSvg from "../icons/error-svg";
 import { CaptionProps } from "../shared/types";
 
-const Caption: FC<CaptionProps> = ({ variant, children }) => {
+const Caption: FC<CaptionProps> = ({ status, children }) => {
   return (
     <span
       className={twMerge(
         "flex items-center gap-3xs",
-        captionVariants({ variant })
+        captionVariants({ status })
       )}
     >
-      {variant === "error" && <ErrorSvg />}
-      {variant === "success" && <SuccessSvg />}
-      <Text variant="inputCaption" className={captionVariants({ variant })}>
+      {status === "error" && <ErrorSvg />}
+      {status === "success" && <SuccessSvg />}
+      <Text variant="inputCaption" className={captionVariants({ status })}>
         {children}
       </Text>
     </span>

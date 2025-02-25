@@ -11,7 +11,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
   (
     {
       type,
-      variant,
+      status,
       label,
       placeholder,
       picker,
@@ -39,7 +39,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
         <div className="relative w-full">
           <input
             ref={ref}
-            className={textInputVariants({ variant })}
+            className={textInputVariants({ status })}
             type={type}
             name={label}
             placeholder={placeholder}
@@ -55,7 +55,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
           />
           <span
             className={`flex items-center absolute inset-y-0 right-2xs ${
-              variant === "disable" && "opacity-50"
+              status === "disabled" && "opacity-50"
             }`}
           >
             {clearButton && isFocused && inputValue ? (
@@ -75,7 +75,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
           </span>
         </div>
 
-        {caption && <Caption variant={caption?.status}>{caption.text}</Caption>}
+        {caption && <Caption status={caption?.status}>{caption.text}</Caption>}
       </div>
     );
   }

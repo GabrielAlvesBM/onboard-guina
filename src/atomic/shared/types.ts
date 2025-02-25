@@ -1,7 +1,7 @@
 import { ReactNode, ChangeEvent } from "react";
 import { ZodType } from "zod";
 
-export type InputVariant = "disabled" | "error";
+export type InputStatus = "disabled" | "error";
 export type CaptionStatus = "error" | "success";
 export type ShowVariant = "outline" | "bold";
 export type TextVariant =
@@ -35,7 +35,7 @@ export interface Field {
   name: string;
   label: string;
   placeholder?: string;
-  variant?: InputVariant;
+  status?: InputStatus;
   caption?: CaptionData;
   infoIcon?: string;
   type?: string;
@@ -54,7 +54,7 @@ export interface ButtonProps
 }
 
 export interface CaptionProps {
-  variant?: CaptionStatus;
+  status?: CaptionStatus;
   children?: ReactNode;
 }
 
@@ -71,7 +71,7 @@ export interface LinkButtonProps {
 }
 
 export interface PasswordInputProps {
-  variant?: InputVariant;
+  status?: InputStatus;
   showVariant?: ShowVariant;
   label?: string;
   placeholder?: string;
@@ -82,7 +82,7 @@ export interface PasswordInputProps {
 
 export interface TextInputProps {
   type?: string;
-  variant?: InputVariant;
+  status?: InputStatus;
   label?: string;
   placeholder?: string;
   picker?: boolean;

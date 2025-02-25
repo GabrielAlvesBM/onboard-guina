@@ -5,7 +5,7 @@ import { PasswordInputProps } from "../shared/types";
 
 const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
   (
-    { variant, showVariant, label, placeholder, caption, infoIcon, ...props },
+    { status, showVariant, label, placeholder, caption, infoIcon, ...props },
     ref
   ) => {
     const [showPassword, setShowPassword] = useState(false);
@@ -26,7 +26,7 @@ const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
         <TextInput
           ref={ref}
           type={showPassword ? "text" : "password"}
-          variant={variant}
+          status={status}
           label={label}
           placeholder={placeholder}
           caption={caption}
