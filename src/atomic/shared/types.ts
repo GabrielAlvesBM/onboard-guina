@@ -1,7 +1,7 @@
 import { ReactNode, ChangeEvent } from "react";
 import { ZodType } from "zod";
 
-export type InputVariant = "disable" | "error";
+export type InputVariant = "disabled" | "error";
 export type CaptionStatus = "error" | "success";
 export type ShowVariant = "outline" | "bold";
 export type TextVariant =
