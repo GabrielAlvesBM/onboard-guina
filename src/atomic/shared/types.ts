@@ -105,9 +105,9 @@ export interface FormFieldsProps {
 
 export interface FormProps<T> {
   schema: ZodType<T>;
-  fields: Readonly<Fields<T>[]>;
   onSubmit: (data: T) => void;
   buttonLabel?: string;
+  children?: ReactNode;
 }
 
 export interface ShowSvgProps {

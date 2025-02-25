@@ -1,15 +1,21 @@
 import Form from "../../../atomic/org.form/form.component";
 import { loginSchema, LoginData } from "../../../atomic/org.form/form.schemas";
-import { Fields } from "../../../atomic/shared/types";
+import {
+  TextFormFields,
+  PasswordFormFields,
+} from "../../../atomic/mol.input-fields";
 
 const LoginPage = () => {
-  const fields: Fields<LoginData>[] = [
+  const emailFields = [
     {
       name: "email",
       label: "E-mail",
       type: "email",
       placeholder: "Digite seu e-mail",
     },
+  ];
+
+  const passwordFields = [
     {
       name: "password",
       label: "Senha",
@@ -25,12 +31,10 @@ const LoginPage = () => {
 
   return (
     <main className="flex gap-2xs w-full max-w-[400px] m-auto">
-      <Form
-        schema={loginSchema}
-        fields={fields}
-        onSubmit={handleSubmit}
-        buttonLabel="Entrar"
-      />
+      <Form schema={loginSchema} onSubmit={handleSubmit} buttonLabel="Entrar">
+        <TextFormFields fields={emailFields} />
+        <PasswordFormFields fields={passwordFields} />
+      </Form>
     </main>
   );
 };
