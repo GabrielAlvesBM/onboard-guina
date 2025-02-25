@@ -1,17 +1,9 @@
 import Form from "../../../atomic/org.form/form.component";
 import { loginSchema, LoginData } from "../../../atomic/org.form/form.schemas";
-
-type Field = {
-  name: keyof LoginData;
-  label: string;
-  placeholder: string;
-  type?: string;
-  variant?: "disable" | "error";
-  infoIcon?: string;
-};
+import { Fields } from "../../../atomic/shared/types";
 
 const LoginPage = () => {
-  const fields: Field[] = [
+  const fields: Fields<LoginData>[] = [
     {
       name: "email",
       label: "E-mail",
@@ -23,7 +15,7 @@ const LoginPage = () => {
       label: "Senha",
       type: "password",
       placeholder: "Digite sua senha",
-      infoIcon: "A senha deve ter pelo menos 6 caracteres"
+      infoIcon: "A senha deve ter pelo menos 6 caracteres",
     },
   ];
 
