@@ -22,7 +22,7 @@ const FormFields: FC<FormFieldsProps> = ({ fields }) => {
             label={field.label}
             {...(isPassword ? {} : { type: field.type || "text" })}
             placeholder={field.placeholder}
-            status={field.status}
+            status={errors[field.name] ? "error" : field.status}
             infoIcon={field.infoIcon}
             {...register(field.name)}
             caption={
