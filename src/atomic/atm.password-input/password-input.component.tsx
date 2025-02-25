@@ -1,21 +1,7 @@
-import { useState, ReactNode, forwardRef } from "react";
+import { useState, forwardRef } from "react";
 import TextInput from "../atm.text-input";
 import ShowSvg from "../icons/show-svg";
-
-interface CaptionData {
-  text: string;
-  status: "error" | "success";
-}
-
-interface PasswordInputProps {
-  variant?: "disable" | "error";
-  showVariant?: "outline" | "bold";
-  label?: string;
-  placeholder?: string;
-  caption?: CaptionData;
-  infoIcon?: string;
-  icon?: ReactNode;
-}
+import { PasswordInputProps } from "../shared/types";
 
 const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
   (

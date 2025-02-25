@@ -1,24 +1,7 @@
-import { FC, ReactNode, JSX } from "react";
+import { FC, JSX } from "react";
 import { twMerge } from "tailwind-merge";
 import { typographyVariants } from "./typography.style";
-
-interface TextProps {
-  variant:
-    | "display"
-    | "h1"
-    | "h2"
-    | "h3"
-    | "h4"
-    | "body1"
-    | "body2"
-    | "inputLabel"
-    | "inputValue"
-    | "inputCaption"
-    | "link"
-    | "linkSmall";
-  children?: ReactNode;
-  className?: string;
-}
+import { TextProps } from "../shared/types";
 
 const variantMapping: Record<
   TextProps["variant"],

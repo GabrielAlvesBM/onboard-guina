@@ -1,9 +1,5 @@
 import { FC, memo, JSX } from "react";
-
-interface ShowSvgProps {
-  visible: boolean;
-  variant?: "outline" | "bold";
-}
+import { ShowSvgProps } from "../shared/types";
 
 const iconPaths: { [key: string]: JSX.Element } = {
   "bold-hidden": (

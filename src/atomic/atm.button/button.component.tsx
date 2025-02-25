@@ -1,18 +1,6 @@
-import { FC, ReactNode } from "react";
+import { FC } from "react";
 import { buttonVariants } from "./button.style";
-
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?:
-    | "primary"
-    | "primaryDestructive"
-    | "secondary"
-    | "secondaryDestructive"
-    | "cta"
-    | "link";
-  disabled?: boolean;
-  icon?: ReactNode;
-  iconPosition?: "left" | "right";
-}
+import { ButtonProps } from "../shared/types";
 
 const Button: FC<ButtonProps> = ({
   variant = "primary",

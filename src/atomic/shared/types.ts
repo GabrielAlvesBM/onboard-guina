@@ -1,0 +1,116 @@
+import { ReactNode, ChangeEvent } from "react";
+import { ZodType } from "zod";
+
+export type InputVariant = "disable" | "error";
+export type CaptionStatus = "error" | "success";
+export type ShowVariant = "outline" | "bold";
+export type TextVariant =
+  | "display"
+  | "h1"
+  | "h2"
+  | "h3"
+  | "h4"
+  | "body1"
+  | "body2"
+  | "inputLabel"
+  | "inputValue"
+  | "inputCaption"
+  | "link"
+  | "linkSmall";
+export type ButtonVariant =
+  | "primary"
+  | "primaryDestructive"
+  | "secondary"
+  | "secondaryDestructive"
+  | "cta"
+  | "link";
+export type TargetType = "_self" | "_blank" | "_parent" | "_top";
+
+export interface CaptionData {
+  text: string;
+  status: CaptionStatus;
+}
+
+export interface Field {
+  name: string;
+  label: string;
+  placeholder?: string;
+  variant?: InputVariant;
+  caption?: CaptionData;
+  infoIcon?: string;
+  type?: string;
+}
+
+export interface Fields<T> extends Field {
+  name: keyof T & string;
+}
+
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: ButtonVariant;
+  disabled?: boolean;
+  icon?: ReactNode;
+  iconPosition?: "left" | "right";
+}
+
+export interface CaptionProps {
+  variant?: CaptionStatus;
+  children?: ReactNode;
+}
+
+export interface InfoIconProps {
+  info: string;
+}
+
+export interface LinkButtonProps {
+  to: string;
+  children?: ReactNode;
+  icon?: ReactNode;
+  iconPosition?: "left" | "right";
+  target?: TargetType;
+}
+
+export interface PasswordInputProps {
+  variant?: InputVariant;
+  showVariant?: ShowVariant;
+  label?: string;
+  placeholder?: string;
+  caption?: CaptionData;
+  infoIcon?: string;
+  icon?: ReactNode;
+}
+
+export interface TextInputProps {
+  type?: string;
+  variant?: InputVariant;
+  label?: string;
+  placeholder?: string;
+  picker?: boolean;
+  caption?: CaptionData;
+  infoIcon?: string;
+  clearButton?: boolean;
+  icon?: ReactNode;
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+}
+
+export interface TextProps {
+  variant: TextVariant;
+  children?: ReactNode;
+  className?: string;
+}
+
+export interface FormFieldsProps {
+  fields: Readonly<Field[]>;
+}
+
+export interface FormProps<T> {
+  schema: ZodType<T>;
+  fields: Readonly<Fields<T>[]>;
+  onSubmit: (data: T) => void;
+  buttonLabel?: string;
+}
+
+export interface ShowSvgProps {
+  visible: boolean;
+  variant?: ShowVariant;
+}

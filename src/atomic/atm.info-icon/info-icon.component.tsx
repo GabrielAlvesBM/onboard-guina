@@ -1,10 +1,7 @@
 import { FC, useState } from "react";
 import Text from "../atm.typography";
 import InfoSvg from "../icons/info-svg";
-
-interface InfoIconProps {
-  info: string;
-}
+import { InfoIconProps } from "../shared/types";
 
 const InfoIcon: FC<InfoIconProps> = ({ info }) => {
   const [visible, setVisible] = useState(false);

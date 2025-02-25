@@ -1,28 +1,11 @@
-import { useState, ReactNode, ChangeEvent, forwardRef } from "react";
+import { useState, forwardRef } from "react";
 import { textInputVariants } from "./text-input.style";
 import Caption from "../atm.caption";
 import Text from "../atm.typography";
 import InfoIcon from "../atm.info-icon";
 import CloseSvg from "../icons/close-svg";
 import DownPickerSvg from "../icons/down-picker-svg";
-
-interface CaptionData {
-  text: string;
-  status: "error" | "success";
-}
-
-interface TextInputProps {
-  type?: string;
-  variant?: "disable" | "error";
-  label?: string;
-  placeholder?: string;
-  picker?: boolean;
-  caption?: CaptionData;
-  infoIcon?: string;
-  clearButton?: boolean;
-  icon?: ReactNode;
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
-}
+import { TextInputProps } from "../shared/types";
 
 const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
   (

@@ -1,14 +1,10 @@
-import { FC, ReactNode } from "react";
+import { FC } from "react";
 import { twMerge } from "tailwind-merge";
 import { captionVariants } from "./caption.style";
 import Text from "../atm.typography";
 import SuccessSvg from "../icons/success-svg";
 import ErrorSvg from "../icons/error-svg";
-
-interface CaptionProps {
-  variant?: "success" | "error";
-  children?: ReactNode;
-}
+import { CaptionProps } from "../shared/types";
 
 const Caption: FC<CaptionProps> = ({ variant, children }) => {
   return (

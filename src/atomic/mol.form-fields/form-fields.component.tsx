@@ -2,25 +2,7 @@ import { FC } from "react";
 import TextInput from "../atm.text-input";
 import PasswordInput from "../atm.password-input";
 import { useFormContext } from "react-hook-form";
-
-interface CaptionData {
-  text: string;
-  status: "error" | "success";
-}
-
-type Field = {
-  name: string;
-  label: string;
-  placeholder?: string;
-  variant?: "disable" | "error";
-  caption?: CaptionData;
-  infoIcon?: string;
-  type?: string;
-};
-
-interface FormFieldsProps {
-  fields: Field[];
-}
+import { FormFieldsProps } from "../shared/types";
 
 const FormFields: FC<FormFieldsProps> = ({ fields }) => {
   const {

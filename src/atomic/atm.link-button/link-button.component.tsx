@@ -1,13 +1,6 @@
-import { FC, ReactNode } from "react";
+import { FC } from "react";
 import Button from "../atm.button";
-
-interface LinkButtonProps {
-  to: string;
-  children?: ReactNode;
-  icon?: ReactNode;
-  iconPosition?: "left" | "right";
-  target?: string;
-}
+import { LinkButtonProps } from "../shared/types";
 
 const LinkButton: FC<LinkButtonProps> = ({
   to,
