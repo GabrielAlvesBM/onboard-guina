@@ -1,9 +1,6 @@
-import Form from "../../../atomic/org.form/form.component";
-import { loginSchema, LoginData } from "../../../atomic/org.form/form.schemas";
-import {
-  TextFormFields,
-  PasswordFormFields,
-} from "../../../atomic/mol.input-fields";
+import Form from "@/atomic/org.form";
+import { loginSchema, LoginData } from "@/atomic/org.form/form.schemas";
+import { TextFormFields, PasswordFormFields } from "@/atomic/mol.input-fields";
 
 const LoginPage = () => {
   const emailFields = [
