@@ -4,7 +4,6 @@ import PasswordInput from "../atm.password-input";
 import { useFormContext } from "react-hook-form";
 import { FormFieldsProps } from "../shared/types";
 
-// Componente para campos de texto
 export const TextFormFields: FC<FormFieldsProps> = ({ fields }) => {
   const {
     register,
@@ -36,7 +35,6 @@ export const TextFormFields: FC<FormFieldsProps> = ({ fields }) => {
   );
 };
 
-// Componente para campos de senha
 export const PasswordFormFields: FC<FormFieldsProps> = ({ fields }) => {
   const {
     register,
