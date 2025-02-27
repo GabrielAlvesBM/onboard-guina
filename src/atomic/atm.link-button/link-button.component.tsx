@@ -1,6 +1,7 @@
 import { FC } from "react";
 import Button from "../atm.button";
 import { LinkButtonProps } from "../shared/types";
+import { twMerge } from "tailwind-merge";
 
 const LinkButton: FC<LinkButtonProps> = ({
   to,
@@ -14,7 +15,7 @@ const LinkButton: FC<LinkButtonProps> = ({
 }) => {
   return (
     <a
-      className={`w-fit ${LinkClassName}`}
+      className={twMerge(`w-fit ${LinkClassName}`)}
       href={to}
       target={target}
       rel={target === "_blank" ? "noopener noreferrer" : undefined}
