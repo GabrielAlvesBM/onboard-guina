@@ -12,7 +12,7 @@ const LoginPage = () => {
 
   return (
     <>
-      <div className="flex flex-col gap-2xs w-full max-w-[400px] m-auto">
+      <div className="flex flex-col gap-2xs w-full max-w-[400px] m-auto px-sm md:px-0">
         <Text variant="h1">{loginStrings.TITLE_H1}</Text>
         <Text variant="body1" className="mb-sm">
           {loginStrings.SUBTITLE}

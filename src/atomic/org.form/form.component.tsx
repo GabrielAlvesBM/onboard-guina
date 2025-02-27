@@ -17,7 +17,7 @@ const Form = <T extends FieldValues>({
     <FormProvider {...methods}>
       <form
         onSubmit={methods.handleSubmit(onSubmit)}
-        className="flex flex-col gap-md w-full px-sm"
+        className="flex flex-col gap-md w-full"
       >
         {children}
 

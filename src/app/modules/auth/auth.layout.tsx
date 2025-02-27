@@ -20,7 +20,7 @@ const AuthLayout = () => {
           <img
             src="/guina-image.png"
             alt="Guina Image"
-            className="max-w-full h-auto object-cover pointer-events-none"
+            className="hidden max-w-full h-auto object-cover pointer-events-none sm:block"
           />
         </div>
       </main>
