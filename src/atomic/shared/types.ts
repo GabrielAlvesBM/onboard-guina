@@ -3,7 +3,7 @@ import { ZodType } from "zod";
 
 export type InputStatus = "disabled" | "error";
 export type CaptionStatus = "error" | "success";
-export type ShowVariant = "outline" | "bold";
+export type SvgStyle = "outline" | "bold";
 export type TextVariant =
   | "display"
   | "h1"
@@ -74,7 +74,7 @@ export interface LinkButtonProps {
 
 export interface PasswordInputProps {
   status?: InputStatus;
-  showVariant?: ShowVariant;
+  showVariant?: SvgStyle;
   label?: string;
   placeholder?: string;
   caption?: CaptionData;
@@ -115,5 +115,5 @@ export interface FormProps<T> {
 
 export interface ShowSvgProps {
   visible: boolean;
-  variant?: ShowVariant;
+  variant?: SvgStyle;
 }

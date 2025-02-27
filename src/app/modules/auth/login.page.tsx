@@ -1,6 +1,7 @@
 import Form from "@/atomic/org.form";
 import Text from "@/atomic/atm.typography";
 import LinkButton from "@/atomic/atm.link-button";
+import ArrowsSvg from "@/atomic/icons/arrows-svg";
 import { loginSchema, LoginData } from "@/atomic/org.form/form.schemas";
 import { TextFormFields, PasswordFormFields } from "@/atomic/mol.input-fields";
 import * as loginStrings from "./login-page.strings";
@@ -13,7 +14,10 @@ const LoginPage = () => {
   return (
     <>
       <header className="absolute top-md left-sm">
-        <LinkButton to="/">{loginStrings.HEADER_LINK_BUTTON}</LinkButton>
+        <LinkButton to="/" ButtonClassName="flex gap-2xs">
+          <ArrowsSvg direction="left" />
+          {loginStrings.HEADER_LINK_BUTTON}
+        </LinkButton>
       </header>
 
       <main className="flex h-screen">
