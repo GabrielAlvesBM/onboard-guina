@@ -1,7 +1,6 @@
 import Form from "@/atomic/org.form";
 import Text from "@/atomic/atm.typography";
 import LinkButton from "@/atomic/atm.link-button";
-import ArrowsSvg from "@/atomic/icons/arrows-svg";
 import { loginSchema, LoginData } from "@/atomic/org.form/form.schemas";
 import { TextFormFields, PasswordFormFields } from "@/atomic/mol.input-fields";
 import * as loginStrings from "./login-page.strings";
@@ -13,57 +12,40 @@ const LoginPage = () => {
 
   return (
     <>
-      <header className="absolute top-md left-sm">
-        <LinkButton to="/" ButtonClassName="flex gap-2xs">
-          <ArrowsSvg direction="left" />
-          {loginStrings.HEADER_LINK_BUTTON}
-        </LinkButton>
-      </header>
+      <div className="flex flex-col gap-2xs w-full max-w-[400px] m-auto">
+        <Text variant="h1">{loginStrings.TITLE_H1}</Text>
+        <Text variant="body1" className="mb-sm">
+          {loginStrings.SUBTITLE}
+        </Text>
 
-      <main className="flex h-screen">
-        <div className="flex flex-col gap-2xs w-full max-w-[400px] m-auto">
-          <Text variant="h1">{loginStrings.TITLE_H1}</Text>
-          <Text variant="body1" className="mb-sm">
-            {loginStrings.SUBTITLE}
-          </Text>
+        <Form
+          schema={loginSchema}
+          onSubmit={handleSubmit}
+          buttonLabel={loginStrings.BUTTON_LABEL_LOGIN}
+        >
+          <TextFormFields fields={loginStrings.EMAIL_FIELDS} />
+          <PasswordFormFields fields={loginStrings.PASSWORD_FIELDS} />
+          <LinkButton to="#" LinkClassName="self-end">
+            {loginStrings.FORGOT_PASSWORD}
+          </LinkButton>
+        </Form>
 
-          <Form
-            schema={loginSchema}
-            onSubmit={handleSubmit}
-            buttonLabel={loginStrings.BUTTON_LABEL_LOGIN}
-          >
-            <TextFormFields fields={loginStrings.EMAIL_FIELDS} />
-            <PasswordFormFields fields={loginStrings.PASSWORD_FIELDS} />
-            <LinkButton to="#" LinkClassName="self-end">
-              {loginStrings.FORGOT_PASSWORD}
-            </LinkButton>
-          </Form>
+        <Text
+          variant="body2"
+          className="flex items-center justify-center gap-3xs mt-2xs px-sm"
+        >
+          <span className="flex-1 border-t border-light"></span>
+          {loginStrings.OR}
+          <span className="flex-1 border-t border-light"></span>
+        </Text>
 
-          <Text
-            variant="body2"
-            className="flex items-center justify-center gap-3xs mt-2xs px-sm"
-          >
-            <span className="flex-1 border-t border-light"></span>
-            {loginStrings.OR}
-            <span className="flex-1 border-t border-light"></span>
-          </Text>
-
-          <div className="flex justify-center items-center">
-            <Text variant="body1">{loginStrings.CTA_TO_REGISTER} </Text>
-            <LinkButton to="#" ButtonClassName="pl-3xs">
-              {loginStrings.REGISTER}
-            </LinkButton>
-          </div>
+        <div className="flex justify-center items-center">
+          <Text variant="body1">{loginStrings.CTA_TO_REGISTER} </Text>
+          <LinkButton to="#" ButtonClassName="pl-3xs">
+            {loginStrings.REGISTER}
+          </LinkButton>
         </div>
-
-        <div className="flex justify-end">
-          <img
-            src="/guina-image.png"
-            alt="Guina Image"
-            className="max-w-full h-auto object-cover"
-          />
-        </div>
-      </main>
+      </div>
     </>
   );
 };
