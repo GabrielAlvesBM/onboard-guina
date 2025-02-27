@@ -1,5 +1,4 @@
 import { Routes, Route } from "react-router-dom";
-import "./App.css";
 import authRoutes from "./app/modules/auth/auth.routes";
 
 function App() {

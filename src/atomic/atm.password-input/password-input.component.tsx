@@ -2,7 +2,7 @@ import { useState, forwardRef } from "react";
 import TextInput from "../atm.text-input";
 import ShowSvg from "../icons/show-svg";
 import { PasswordInputProps } from "../shared/types";
-import { SHOW_PASSWORD_LABEL, HIDE_PASSWORD_LABEL } from "../shared/strings";
+import { SHOW_PASSWORD_LABEL, HIDE_PASSWORD_LABEL } from "./password.strings";
 
 const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
   (

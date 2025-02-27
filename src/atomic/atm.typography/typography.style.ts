@@ -21,7 +21,7 @@ export const typographyVariants = tv({
   compoundVariants: [
     {
       variant: ["display", "h1", "h2", "h3", "h4"],
-      class: "font-primary leading-[120%]",
+      class: "font-primary leading-[120%] text-2x-dark",
     },
     {
       variant: [

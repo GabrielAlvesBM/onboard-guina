@@ -1,26 +1,9 @@
 import Form from "@/atomic/org.form";
+import Text from "@/atomic/atm.typography";
+import LinkButton from "@/atomic/atm.link-button";
 import { loginSchema, LoginData } from "@/atomic/org.form/form.schemas";
 import { TextFormFields, PasswordFormFields } from "@/atomic/mol.input-fields";
-import { BUTTON_LABEL_LOGIN } from "@/atomic/shared/strings";
-
-const emailFields = [
-  {
-    name: "email",
-    label: "E-mail",
-    type: "email",
-    placeholder: "Digite seu e-mail",
-  },
-];
-
-const passwordFields = [
-  {
-    name: "password",
-    label: "Senha",
-    type: "password",
-    placeholder: "Digite sua senha",
-    infoIcon: "A senha deve ter pelo menos 6 caracteres",
-  },
-];
+import * as loginStrings from "./login-page.strings";
 
 const LoginPage = () => {
   const handleSubmit = (data: LoginData) => {
@@ -28,16 +11,56 @@ const LoginPage = () => {
   };
 
   return (
-    <main className="flex gap-2xs w-full max-w-[400px] m-auto">
-      <Form
-        schema={loginSchema}
-        onSubmit={handleSubmit}
-        buttonLabel={BUTTON_LABEL_LOGIN}
-      >
-        <TextFormFields fields={emailFields} />
-        <PasswordFormFields fields={passwordFields} />
-      </Form>
-    </main>
+    <>
+      <header className="absolute top-md left-sm">
+        <LinkButton to="/">{loginStrings.HEADER_LINK_BUTTON}</LinkButton>
+      </header>
+
+      <main className="flex h-screen">
+        <div className="flex flex-col gap-2xs w-full max-w-[400px] m-auto">
+          <Text variant="h1">{loginStrings.TITLE_H1}</Text>
+          <Text variant="body1" className="mb-sm">
+            {loginStrings.SUBTITLE}
+          </Text>
+
+          <Form
+            schema={loginSchema}
+            onSubmit={handleSubmit}
+            buttonLabel={loginStrings.BUTTON_LABEL_LOGIN}
+          >
+            <TextFormFields fields={loginStrings.EMAIL_FIELDS} />
+            <PasswordFormFields fields={loginStrings.PASSWORD_FIELDS} />
+            <LinkButton to="#" LinkClassName="self-end">
+              {loginStrings.FORGOT_PASSWORD}
+            </LinkButton>
+          </Form>
+
+          <Text
+            variant="body2"
+            className="flex items-center justify-center gap-3xs mt-2xs px-sm"
+          >
+            <span className="flex-1 border-t border-light"></span>
+            {loginStrings.OR}
+            <span className="flex-1 border-t border-light"></span>
+          </Text>
+
+          <div className="flex justify-center items-center">
+            <Text variant="body1">{loginStrings.CTA_TO_REGISTER} </Text>
+            <LinkButton to="#" ButtonClassName="pl-3xs">
+              {loginStrings.REGISTER}
+            </LinkButton>
+          </div>
+        </div>
+
+        <div className="flex justify-end">
+          <img
+            src="/guina-image.png"
+            alt="Guina Image"
+            className="max-w-full h-auto object-cover"
+          />
+        </div>
+      </main>
+    </>
   );
 };
 

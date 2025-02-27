@@ -8,17 +8,24 @@ const LinkButton: FC<LinkButtonProps> = ({
   icon,
   iconPosition,
   target = "_self",
+  LinkClassName,
+  ButtonClassName,
   ...props
 }) => {
   return (
     <a
-      className="inline-flex"
+      className={`w-fit ${LinkClassName}`}
       href={to}
       target={target}
-      rel={target === "blank" ? "noopener noreferrer" : undefined}
+      rel={target === "_blank" ? "noopener noreferrer" : undefined}
       {...props}
     >
-      <Button variant="link" icon={icon} iconPosition={iconPosition}>
+      <Button
+        variant="link"
+        icon={icon}
+        iconPosition={iconPosition}
+        className={ButtonClassName}
+      >
         {children}
       </Button>
     </a>

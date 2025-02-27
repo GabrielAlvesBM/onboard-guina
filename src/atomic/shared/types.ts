@@ -68,6 +68,8 @@ export interface LinkButtonProps {
   icon?: ReactNode;
   iconPosition?: "left" | "right";
   target?: TargetType;
+  LinkClassName?: string;
+  ButtonClassName?: string;
 }
 
 export interface PasswordInputProps {
@@ -101,6 +103,7 @@ export interface TextProps {
 
 export interface FormFieldsProps {
   fields: Readonly<Field[]>;
+  children?: ReactNode;
 }
 
 export interface FormProps<T> {
