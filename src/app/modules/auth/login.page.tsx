@@ -9,20 +9,24 @@ import { LOGIN_MUTATION } from "@/app/data/graphql/mutation/login";
 import { LoginMutation, MutationLoginArgs } from "app/data/graphql/generated";
 
 const LoginPage = () => {
-  const [login, { loading }] = useMutation<LoginMutation, MutationLoginArgs>(
-    LOGIN_MUTATION
-  );
+  const [loginMutation, { loading }] = useMutation<
+    LoginMutation,
+    MutationLoginArgs
+  >(LOGIN_MUTATION, {
+    onCompleted(data) {
+      console.log("Resposta da mutação: ", data);
+    },
+
+    onError(error) {
+      console.error("Erro ao realizar o login: ", error);
+    },
+  });
 
   const handleSubmit = async (data: LoginData) => {
-    try {
-      const res = await login({
-        variables: { data: data },
-      });
+    loginMutation({
+      variables: { data: data },
+    });
 
-      console.log("Resposta da mutação: ", res);
-    } catch (error) {
-      console.error("Erro ao realizar o login: ", error);
-    }
     console.log("Dados enviados: ", data);
   };
 
