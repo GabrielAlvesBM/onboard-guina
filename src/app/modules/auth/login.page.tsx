@@ -18,7 +18,7 @@ const LoginPage = () => {
     },
   });
 
-  const handleSubmit = async (data: LoginData) => {
+  const handleSubmit = (data: LoginData) => {
     loginMutation({
       variables: { data: data },
     });
