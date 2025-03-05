@@ -7,6 +7,7 @@ const Form = <T extends FieldValues>({
   schema,
   onSubmit,
   buttonLabel = "Enviar",
+  buttonDisabled = false,
   children,
 }: FormProps<T>) => {
   const methods = useForm<T>({
@@ -21,7 +22,9 @@ const Form = <T extends FieldValues>({
       >
         {children}
 
-        <Button type="submit">{buttonLabel}</Button>
+        <Button type="submit" disabled={buttonDisabled}>
+          {buttonLabel}
+        </Button>
       </form>
     </FormProvider>
   );

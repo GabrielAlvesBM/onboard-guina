@@ -25,7 +25,8 @@
     "baseUrl": "./src",
     "paths": {
       "@/atomic/*": ["atomic/*"],
-      "@/apollo/*": ["apollo/*"]
+      "@/apollo/*": ["apollo/*"],
+      "@/app/*": ["app/*"]
     }
   },
   "include": ["src"]

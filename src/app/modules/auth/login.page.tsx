@@ -4,9 +4,25 @@ import LinkButton from "@/atomic/atm.link-button";
 import { loginSchema, LoginData } from "@/atomic/org.form/form.schemas";
 import { TextFormFields, PasswordFormFields } from "@/atomic/mol.input-fields";
 import * as loginStrings from "./login-page.strings";
+import { useMutation } from "@apollo/client";
+import { LOGIN_MUTATION } from "@/app/data/graphql/mutation/login";
+import { LoginMutation, MutationLoginArgs } from "app/data/graphql/generated";
 
 const LoginPage = () => {
-  const handleSubmit = (data: LoginData) => {
+  const [login, { loading }] = useMutation<LoginMutation, MutationLoginArgs>(
+    LOGIN_MUTATION
+  );
+
+  const handleSubmit = async (data: LoginData) => {
+    try {
+      const res = await login({
+        variables: { data: data },
+      });
+
+      console.log("Resposta da mutação: ", res);
+    } catch (error) {
+      console.error("Erro ao realizar o login: ", error);
+    }
     console.log("Dados enviados: ", data);
   };
 
@@ -21,7 +37,12 @@ const LoginPage = () => {
         <Form
           schema={loginSchema}
           onSubmit={handleSubmit}
-          buttonLabel={loginStrings.BUTTON_LABEL_LOGIN}
+          buttonDisabled={loading}
+          buttonLabel={
+            loading
+              ? loginStrings.BUTTON_LABEL_LOGIN_LOADING
+              : loginStrings.BUTTON_LABEL_LOGIN
+          }
         >
           <TextFormFields fields={loginStrings.EMAIL_FIELDS} />
           <PasswordFormFields fields={loginStrings.PASSWORD_FIELDS} />

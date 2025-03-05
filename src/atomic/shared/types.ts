@@ -110,6 +110,7 @@ export interface FormProps<T> {
   schema: ZodType<T>;
   onSubmit: (data: T) => void;
   buttonLabel?: string;
+  buttonDisabled?: boolean;
   children?: ReactNode;
 }
 

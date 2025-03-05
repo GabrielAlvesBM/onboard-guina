@@ -22,6 +22,7 @@ export const PASSWORD_FIELDS = [
   },
 ];
 export const BUTTON_LABEL_LOGIN = "Entrar";
+export const BUTTON_LABEL_LOGIN_LOADING = "Carregando..."
 
 export const FORGOT_PASSWORD = "Esqueceu a senha?";
 export const OR = "Ou";
