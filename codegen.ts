@@ -13,7 +13,7 @@ const config: CodegenConfig = {
   documents: "./src/app/data/graphql/**/*.graphql",
   generates: {
     "./src/app/data/graphql/generated/index.ts": {
-      plugins: ["typescript", "typescript-operations"],
+      plugins: ["typescript", "typescript-operations", "typed-document-node"],
     },
   },
 };

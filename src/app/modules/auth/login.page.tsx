@@ -5,14 +5,10 @@ import { loginSchema, LoginData } from "@/atomic/org.form/form.schemas";
 import { TextFormFields, PasswordFormFields } from "@/atomic/mol.input-fields";
 import * as loginStrings from "./login-page.strings";
 import { useMutation } from "@apollo/client";
-import { LOGIN_MUTATION } from "@/app/data/graphql/mutation/login";
-import { LoginMutation, MutationLoginArgs } from "app/data/graphql/generated";
+import { LoginDocument } from "@/app/data/graphql/generated";
 
 const LoginPage = () => {
-  const [loginMutation, { loading }] = useMutation<
-    LoginMutation,
-    MutationLoginArgs
-  >(LOGIN_MUTATION, {
+  const [loginMutation, { loading }] = useMutation(LoginDocument, {
     onCompleted(data) {
       console.log("Resposta da mutação: ", data);
     },
