@@ -4,24 +4,20 @@ import LinkButton from "@/atomic/atm.link-button";
 import { loginSchema, LoginData } from "@/atomic/org.form/form.schemas";
 import { TextFormFields, PasswordFormFields } from "@/atomic/mol.input-fields";
 import * as loginStrings from "./login-page.strings";
-import { useMutation } from "@apollo/client";
-import { LoginDocument } from "@/app/data/graphql/generated";
+import { useLogin } from "@/app/domain/auth/login.use-case";
 
 const LoginPage = () => {
-  const [loginMutation, { loading }] = useMutation(LoginDocument, {
+  const { login, loading } = useLogin({
     onCompleted(data) {
-      console.log("Resposta da mutação: ", data);
+      console.log(data);
     },
-
     onError(error) {
-      console.error("Erro ao realizar o login: ", error);
+      console.error(error.message);
     },
   });
 
   const handleSubmit = (data: LoginData) => {
-    loginMutation({
-      variables: { data: data },
-    });
+    login({ data: data });
 
     console.log("Dados enviados: ", data);
   };
