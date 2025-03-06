@@ -1,13 +1,13 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
-interface UserProps {
+interface UserStoreProps {
   id: number | null;
   name: string | null;
   setUser: (user: { id: number; name: string }) => void;
 }
 
-export const useUserStore = create<UserProps>()(
+export const useUserStore = create<UserStoreProps>()(
   persist(
     (set) => ({
       name: null,
