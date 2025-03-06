@@ -5,6 +5,7 @@ interface UserStoreProps {
   id: number | null;
   name: string | null;
   setUser: (user: { id: number; name: string }) => void;
+  clearUser: () => void;
 }
 
 export const useUserStore = create<UserStoreProps>()(
@@ -13,6 +14,7 @@ export const useUserStore = create<UserStoreProps>()(
       name: null,
       id: null,
       setUser: (user) => set({ id: user.id, name: user.name }),
+      clearUser: () => set({ id: null, name: null }),
     }),
     {
       name: "user-store",
