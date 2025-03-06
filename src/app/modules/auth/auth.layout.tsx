@@ -14,7 +14,9 @@ const AuthLayout = () => {
       </header>
 
       <main className="flex h-screen">
-        <Outlet />
+        <div className="flex w-full">
+          <Outlet />
+        </div>
 
         <div className="flex justify-end">
           <img
