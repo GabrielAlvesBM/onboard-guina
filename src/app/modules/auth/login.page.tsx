@@ -3,23 +3,27 @@ import Text from "@/atomic/atm.typography";
 import LinkButton from "@/atomic/atm.link-button";
 import { loginSchema, LoginData } from "@/atomic/org.form/form.schemas";
 import { TextFormFields, PasswordFormFields } from "@/atomic/mol.input-fields";
+import Caption from "@/atomic/atm.caption";
 import * as loginStrings from "./login-page.strings";
 import { useLogin } from "@/app/domain/auth/login.use-case";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+  const [errorMsg, setErrorMsg] = useState("");
+
   const { login, loading } = useLogin({
-    onCompleted(data) {
-      console.log(data);
+    onCompleted() {
+      navigate("/home");
     },
     onError(error) {
-      console.error(error.message);
+      setErrorMsg(error.message);
     },
   });
 
   const handleSubmit = (data: LoginData) => {
     login({ data: data });
-
-    console.log("Dados enviados: ", data);
   };
 
   return (
@@ -42,6 +46,9 @@ const LoginPage = () => {
         >
           <TextFormFields fields={loginStrings.EMAIL_FIELDS} />
           <PasswordFormFields fields={loginStrings.PASSWORD_FIELDS} />
+
+          {errorMsg ? <Caption status="error">{errorMsg}</Caption> : undefined}
+
           <LinkButton to="#" LinkClassName="self-end">
             {loginStrings.FORGOT_PASSWORD}
           </LinkButton>

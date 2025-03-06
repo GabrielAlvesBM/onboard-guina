@@ -10,7 +10,7 @@ const Caption: FC<CaptionProps> = ({ status, children }) => {
   return (
     <span
       className={twMerge(
-        "flex items-center gap-3xs",
+        "flex items-center gap-3xs text-left",
         captionVariants({ status })
       )}
     >
