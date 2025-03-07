@@ -18,11 +18,11 @@ const Form = <T extends FieldValues>({
     <FormProvider {...methods}>
       <form
         onSubmit={methods.handleSubmit(onSubmit)}
-        className="flex flex-col gap-md w-full"
+        className="flex flex-col gap-xs w-full"
       >
         {children}
 
-        <Button type="submit" disabled={buttonDisabled}>
+        <Button type="submit" disabled={buttonDisabled} className="mt-xs">
           {buttonLabel}
         </Button>
       </form>

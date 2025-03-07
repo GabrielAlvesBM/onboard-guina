@@ -65,7 +65,7 @@ const LoginPage = () => {
 
         <div className="flex justify-center items-center">
           <Text variant="body1">{loginStrings.CTA_TO_REGISTER} </Text>
-          <LinkButton to="#" ButtonClassName="pl-3xs">
+          <LinkButton to="/auth/register" ButtonClassName="pl-3xs">
             {loginStrings.REGISTER}
           </LinkButton>
         </div>
