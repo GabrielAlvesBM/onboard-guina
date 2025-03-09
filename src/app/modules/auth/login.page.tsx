@@ -4,7 +4,7 @@ import LinkButton from "@/atomic/atm.link-button";
 import { loginSchema, LoginData } from "@/atomic/org.form/form.schemas";
 import { TextFormFields, PasswordFormFields } from "@/atomic/mol.input-fields";
 import Caption from "@/atomic/atm.caption";
-import * as loginStrings from "./login-page.strings";
+import * as loginStrings from "./login.strings";
 import { useLogin } from "@/app/domain/auth/login.use-case";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";

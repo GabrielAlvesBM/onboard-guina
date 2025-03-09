@@ -1,4 +1,4 @@
-export const TITLE_H1 = "Cadastre-se";
+export const TITLE = "Cadastre-se";
 export const SUBTITLE =
   "Para entrar na plataforma é necessário entrar ou criar uma conta.";
 

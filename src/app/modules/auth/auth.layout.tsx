@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import LinkButton from "@/atomic/atm.link-button";
 import ArrowsSvg from "@/atomic/icons/arrows-svg";
-import { HEADER_LINK_BUTTON } from "./login-page.strings";
+import { HEADER_LINK_BUTTON } from "./login.strings";
 
 const AuthLayout = () => {
   return (

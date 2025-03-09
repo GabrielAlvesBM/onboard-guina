@@ -1,6 +1,6 @@
 export const HEADER_LINK_BUTTON = "Voltar para o Início";
 
-export const TITLE_H1 = "Entre ou Cadastre-se";
+export const TITLE = "Entre ou Cadastre-se";
 export const SUBTITLE =
   "Para entrar na plataforma é necessário entrar ou criar uma conta.";
 
@@ -22,7 +22,7 @@ export const PASSWORD_FIELDS = [
   },
 ];
 export const BUTTON_LABEL_LOGIN = "Entrar";
-export const BUTTON_LABEL_LOGIN_LOADING = "Carregando..."
+export const BUTTON_LABEL_LOGIN_LOADING = "Carregando...";
 
 export const FORGOT_PASSWORD = "Esqueceu a senha?";
 export const OR = "Ou";
