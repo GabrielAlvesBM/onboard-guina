@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import LinkButton from "@/atomic/atm.link-button";
-import ArrowsSvg from "@/atomic/icons/arrows-svg";
+import { ArrowOutlineLeft } from "@/atomic/icons/arrow";
 import { HEADER_LINK_BUTTON } from "./login.strings";
 
 const AuthLayout = () => {
@@ -8,7 +8,7 @@ const AuthLayout = () => {
     <>
       <header className="absolute top-md left-sm">
         <LinkButton to="/" ButtonClassName="flex gap-2xs">
-          <ArrowsSvg direction="left" />
+          <ArrowOutlineLeft />
           {HEADER_LINK_BUTTON}
         </LinkButton>
       </header>

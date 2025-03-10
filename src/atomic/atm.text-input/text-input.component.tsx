@@ -3,8 +3,8 @@ import { textInputVariants } from "./text-input.style";
 import Caption from "../atm.caption";
 import Text from "../atm.typography";
 import InfoIcon from "../atm.info-icon";
-import CloseSvg from "../icons/close-svg";
-import DownPickerSvg from "../icons/down-picker-svg";
+import { Close } from "../icons/close";
+import { PickerDown } from "../icons/picker";
 import { TextInputProps } from "../shared/types";
 
 const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
@@ -65,10 +65,10 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
                 onMouseDown={(event) => event.preventDefault()}
                 onClick={() => setInputValue("")}
               >
-                <CloseSvg />
+                <Close />
               </button>
             ) : picker ? (
-              <DownPickerSvg />
+              <PickerDown />
             ) : (
               icon
             )}

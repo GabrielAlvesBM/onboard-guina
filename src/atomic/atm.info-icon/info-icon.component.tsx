@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import Text from "../atm.typography";
-import InfoSvg from "../icons/info-svg";
+import { Info } from "../icons/info";
 import { InfoIconProps } from "../shared/types";
 
 const InfoIcon: FC<InfoIconProps> = ({ info }) => {
@@ -12,7 +12,7 @@ const InfoIcon: FC<InfoIconProps> = ({ info }) => {
       onMouseEnter={() => setVisible(true)}
       onMouseLeave={() => setVisible(false)}
     >
-      <InfoSvg />
+      <Info />
 
       {visible && (
         <div className="absolute left-full px-2xs py-3xs rounded-xs bg-light z-10">

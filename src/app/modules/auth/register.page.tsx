@@ -4,7 +4,7 @@ import LinkButton from "@/atomic/atm.link-button";
 import { registerSchema, RegisterData } from "@/atomic/org.form/form.schemas";
 import { TextFormFields, PasswordFormFields } from "@/atomic/mol.input-fields";
 import * as registerStrings from "./register.strings";
-import ControlSvg from "@/atomic/icons/control-svg";
+import { CheckboxDefault } from "@/atomic/icons/control";
 
 const RegisterPage = () => {
   const handleSubmit = (data: RegisterData) => {
@@ -28,7 +28,7 @@ const RegisterPage = () => {
           <PasswordFormFields fields={registerStrings.PASSWORD_FIELDS} />
 
           <div className="flex gap-3xs">
-            <ControlSvg />
+            <CheckboxDefault />
 
             <Text variant="body1" className="text-left leading-none">
               {registerStrings.CONFIRM_TERMS}

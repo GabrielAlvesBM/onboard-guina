@@ -1,14 +1,11 @@
 import { useState, forwardRef } from "react";
 import TextInput from "../atm.text-input";
-import ShowSvg from "../icons/show-svg";
+import { ShowOutline, HideOutline } from "../icons/show";
 import { PasswordInputProps } from "../shared/types";
 import { SHOW_PASSWORD_LABEL, HIDE_PASSWORD_LABEL } from "./password.strings";
 
 const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
-  (
-    { status, showVariant, label, placeholder, caption, infoIcon, ...props },
-    ref
-  ) => {
+  ({ status, label, placeholder, caption, infoIcon, ...props }, ref) => {
     const [showPassword, setShowPassword] = useState(false);
 
     const showPasswordButton = (
@@ -18,7 +15,7 @@ const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
         onClick={() => setShowPassword((prev) => !prev)}
         aria-label={showPassword ? HIDE_PASSWORD_LABEL : SHOW_PASSWORD_LABEL}
       >
-        <ShowSvg visible={showPassword} variant={showVariant} />
+        {showPassword ? <HideOutline /> : <ShowOutline />}
       </button>
     );
 

@@ -74,7 +74,6 @@ export interface LinkButtonProps {
 
 export interface PasswordInputProps {
   status?: InputStatus;
-  showVariant?: SvgStyle;
   label?: string;
   placeholder?: string;
   caption?: CaptionData;
