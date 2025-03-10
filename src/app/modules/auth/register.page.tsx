@@ -14,7 +14,7 @@ const RegisterPage = () => {
   return (
     <>
       <div className="flex flex-col gap-2xs w-full max-w-[400px] m-auto px-sm md:px-0">
-        <Text variant="h1">{registerStrings.TITLE_H1}</Text>
+        <Text variant="h1">{registerStrings.TITLE}</Text>
         <Text variant="body1" className="mb-sm">
           {registerStrings.SUBTITLE}
         </Text>
