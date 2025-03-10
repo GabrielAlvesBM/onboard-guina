@@ -2,9 +2,9 @@ import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
 interface UserStoreProps {
-  id: number | null;
+  id: string | null;
   name: string | null;
-  setUser: (user: { id: number; name: string }) => void;
+  setUser: (user: { id: string; name: string }) => void;
   clearUser: () => void;
 }
 
