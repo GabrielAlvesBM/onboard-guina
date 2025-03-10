@@ -16,19 +16,13 @@ export const useLogin = ({ onCompleted, onError }: UseLoginProps) => {
   const { setAuth } = useAuthStore();
   const { setUser } = useUserStore();
 
-  const handleCompleted = (data?: LoginMutation) => {
-    if (!data?.login) {
-      return;
-    }
-
+  const handleCompleted = (data: LoginMutation) => {
     const { token, user } = data.login;
 
     setAuth(token);
     setUser({ id: user.id, name: user.name });
 
-    if (onCompleted) {
-      onCompleted(data);
-    }
+    onCompleted?.(data);
   };
 
   const [loginMutation, { loading }] = useMutation(LoginDocument, {
