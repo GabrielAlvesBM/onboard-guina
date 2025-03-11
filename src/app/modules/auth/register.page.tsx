@@ -1,14 +1,36 @@
 import Form from "@/atomic/org.form";
 import Text from "@/atomic/atm.typography";
 import LinkButton from "@/atomic/atm.link-button";
+import Caption from "@/atomic/atm.caption";
 import { registerSchema, RegisterData } from "@/atomic/org.form/form.schemas";
 import { TextFormFields, PasswordFormFields } from "@/atomic/mol.input-fields";
 import CheckboxInput from "@/atomic/atm.checkbox-input";
 import * as registerStrings from "./register.strings";
+import { useRegister } from "@/app/domain/auth/register.use-case";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const RegisterPage = () => {
+  const navigate = useNavigate();
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const { register, loading } = useRegister({
+    onCompleted() {
+      navigate("/home");
+    },
+    onError(error) {
+      setErrorMsg(error.message);
+    },
+  });
+
   const handleSubmit = (data: RegisterData) => {
-    console.log(data);
+    const registerData = {
+      email: data.email,
+      name: data.name,
+      password: data.password,
+    };
+
+    register({ data: registerData });
   };
 
   return (
@@ -22,7 +44,12 @@ const RegisterPage = () => {
         <Form
           schema={registerSchema}
           onSubmit={handleSubmit}
-          buttonLabel={registerStrings.BUTTON_LABEL_REGISTER}
+          buttonDisabled={loading}
+          buttonLabel={
+            loading
+              ? registerStrings.BUTTON_LABEL_REGISTER_LOADING
+              : registerStrings.BUTTON_LABEL_REGISTER
+          }
         >
           <TextFormFields fields={registerStrings.TEXT_FIELDS} />
           <PasswordFormFields fields={registerStrings.PASSWORD_FIELDS} />
@@ -39,6 +66,7 @@ const RegisterPage = () => {
               {registerStrings.POLICIES}
             </LinkButton>
           </CheckboxInput>
+          {errorMsg && <Caption status="error">{errorMsg}</Caption>}
         </Form>
 
         <Text
