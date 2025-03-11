@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
-import authRoutes from "./app/modules/auth/auth.routes";
-import AuthLayout from "./app/modules/auth/auth.layout";
+import AuthGuard from "./app/guards/auth-guard";
+import { AuthLayout, AuthRoutes } from "./app/modules/auth";
+import { HomeLayout, HomeRoutes } from "./app/modules/home";
 import { ApolloProvider } from "@apollo/client";
 import client from "./apollo/client";
 
@@ -9,9 +10,17 @@ function App() {
     <ApolloProvider client={client}>
       <Routes>
         <Route path="/auth" element={<AuthLayout />}>
-          {authRoutes.map((route, index) => (
+          {AuthRoutes.map((route, index) => (
             <Route key={index} path={route.path} element={route.element} />
           ))}
+        </Route>
+
+        <Route element={<AuthGuard />}>
+          <Route path="/" element={<HomeLayout />}>
+            {HomeRoutes.map((route, index) => (
+              <Route key={index} path={route.path} element={route.element} />
+            ))}
+          </Route>
         </Route>
       </Routes>
     </ApolloProvider>

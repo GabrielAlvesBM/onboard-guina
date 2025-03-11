@@ -2,7 +2,7 @@ import { RouteObject } from "react-router-dom";
 import LoginPage from "./login.page";
 import RegisterPage from "./register.page";
 
-const authRoutes: RouteObject[] = [
+const AuthRoutes: RouteObject[] = [
   {
     path: "login",
     element: <LoginPage />,
@@ -13,4 +13,4 @@ const authRoutes: RouteObject[] = [
   },
 ];
 
-export default authRoutes;
+export default AuthRoutes;
