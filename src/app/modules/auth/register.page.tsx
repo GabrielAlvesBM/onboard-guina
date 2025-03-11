@@ -3,8 +3,8 @@ import Text from "@/atomic/atm.typography";
 import LinkButton from "@/atomic/atm.link-button";
 import { registerSchema, RegisterData } from "@/atomic/org.form/form.schemas";
 import { TextFormFields, PasswordFormFields } from "@/atomic/mol.input-fields";
+import CheckboxInput from "@/atomic/atm.checkbox-input";
 import * as registerStrings from "./register.strings";
-import { CheckboxDefault } from "@/atomic/icons/control";
 
 const RegisterPage = () => {
   const handleSubmit = (data: RegisterData) => {
@@ -27,22 +27,18 @@ const RegisterPage = () => {
           <TextFormFields fields={registerStrings.TEXT_FIELDS} />
           <PasswordFormFields fields={registerStrings.PASSWORD_FIELDS} />
 
-          <div className="flex gap-3xs">
-            <CheckboxDefault />
+          <CheckboxInput name="acceptTerms">
+            {registerStrings.CONFIRM_TERMS}
+            <LinkButton to="#" ButtonClassName="!px-3xs">
+              {registerStrings.TERMS}
+            </LinkButton>
 
-            <Text variant="body1" className="text-left leading-none">
-              {registerStrings.CONFIRM_TERMS}
-              <LinkButton to="#" ButtonClassName="!px-3xs">
-                {registerStrings.TERMS}
-              </LinkButton>
+            {registerStrings.AND}
 
-              {registerStrings.AND}
-
-              <LinkButton to="#" ButtonClassName="!px-3xs">
-                {registerStrings.POLICIES}
-              </LinkButton>
-            </Text>
-          </div>
+            <LinkButton to="#" ButtonClassName="!px-3xs">
+              {registerStrings.POLICIES}
+            </LinkButton>
+          </CheckboxInput>
         </Form>
 
         <Text
