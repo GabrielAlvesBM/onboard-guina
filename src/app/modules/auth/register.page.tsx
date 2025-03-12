@@ -16,7 +16,7 @@ const RegisterPage = () => {
 
   const { register, loading } = useRegister({
     onCompleted() {
-      navigate("/home");
+      navigate("/");
     },
     onError(error) {
       setErrorMsg(error.message);

@@ -15,7 +15,7 @@ const LoginPage = () => {
 
   const { login, loading } = useLogin({
     onCompleted() {
-      navigate("/home");
+      navigate("/");
     },
     onError(error) {
       setErrorMsg(error.message);
