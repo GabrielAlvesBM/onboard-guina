@@ -3,27 +3,8 @@ import { setContext } from "@apollo/client/link/context";
 import { onError } from "@apollo/client/link/error";
 import { useAuthStore } from "@/app/stores/auth.store";
 import { useUserStore } from "@/app/stores/user.store";
-import { jwtDecode } from "jwt-decode";
 
 const httpLink = new HttpLink({ uri: import.meta.env.VITE_SERVER_URL });
-
-const isTokenExpired = (token: string | null): boolean => {
-  try {
-    if (!token) {
-      return false;
-    }
-
-    const decoded: { exp: number } = jwtDecode(token);
-
-    if (!decoded.exp) {
-      return true;
-    }
-
-    return decoded.exp * 1000 < Date.now();
-  } catch {
-    return true;
-  }
-};
 
 const logoutUser = () => {
   localStorage.removeItem("auth-store");
@@ -48,9 +29,13 @@ const authLink = setContext((_, { headers }) => {
 const logoutMiddleware = onError(({ networkError, graphQLErrors }) => {
   const token = useAuthStore.getState().token;
 
-  if (graphQLErrors && isTokenExpired(token)) {
-    console.warn("Token expirado. Deslogando usuário...");
-    logoutUser();
+  if (graphQLErrors) {
+    graphQLErrors.forEach((error) => {
+      if (error.extensions?.code === 401 && !!token) {
+        console.warn("Token expirado. Deslogando usuário...");
+        logoutUser();
+      }
+    });
   }
 
   if (networkError) {
