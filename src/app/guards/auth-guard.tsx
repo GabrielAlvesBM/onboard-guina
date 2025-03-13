@@ -1,10 +1,12 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { useAuthStore } from "../stores/auth.store";
 import Button from "@/atomic/atm.button";
 import { PickerDown } from "@/atomic/icons/picker";
+import { useAuthStore } from "../stores/auth.store";
+import { useUserStore } from "../stores/user.store";
 
 const AuthGuard = () => {
   const { token } = useAuthStore();
+  const { name } = useUserStore();
 
   if (!token) {
     return <Navigate to="/auth/login" replace />;
@@ -18,7 +20,7 @@ const AuthGuard = () => {
 
           <Button variant="link" className="flex gap-2xs items-center">
             <img src="/avatar1.png" alt="Avatar 1" className="w-md" />
-            <span className="hidden xs:block">Nome do Usuário</span>
+            <span className="hidden xs:block">{name}</span>
             <PickerDown />
           </Button>
         </nav>
