@@ -31,7 +31,9 @@ const logoutMiddleware = onError(({ networkError, graphQLErrors }) => {
 
   if (graphQLErrors) {
     graphQLErrors.forEach((error) => {
-      if (error.extensions?.code === 401 && !!token) {
+      const errorCode = (error.extensions?.exception as { code: number }).code;
+
+      if (errorCode === 401 && !!token) {
         console.warn("Token expirado. Deslogando usuário...");
         logoutUser();
       }
