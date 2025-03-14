@@ -3,7 +3,7 @@ import { textInputVariants } from "./text-input.style";
 import Caption from "../atm.caption";
 import Text from "../atm.typography";
 import InfoIcon from "../atm.info-icon";
-import { Close } from "../icons/close";
+import { CloseBold } from "../icons/close";
 import { PickerDown } from "../icons/picker";
 import { TextInputProps } from "../shared/types";
 
@@ -65,7 +65,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
                 onMouseDown={(event) => event.preventDefault()}
                 onClick={() => setInputValue("")}
               >
-                <Close />
+                <CloseBold />
               </button>
             ) : picker ? (
               <PickerDown />
