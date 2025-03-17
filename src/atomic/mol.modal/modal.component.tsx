@@ -1,4 +1,4 @@
-import { FC, ReactNode, useState, useEffect } from "react";
+import { FC, ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { CloseOutline } from "../icons/close";
 
@@ -9,19 +9,6 @@ interface ModalProps {
 }
 
 const Modal: FC<ModalProps> = ({ isOpen, onClose, children }) => {
-  const [modalContainer] = useState(() => {
-    const div = document.createElement("div");
-    div.id = "modal-root";
-    return div;
-  });
-
-  useEffect(() => {
-    document.body.appendChild(modalContainer);
-    return () => {
-      document.body.removeChild(modalContainer);
-    };
-  }, [modalContainer]);
-
   if (!isOpen) {
     return null;
   }
@@ -47,7 +34,7 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, children }) => {
             {children}
           </div>
         </div>,
-        modalContainer
+        document.getElementById("modal-root") as HTMLElement
       )}
     </>
   );
