@@ -22,5 +22,10 @@ export const registerSchema = z
     path: ["acceptTerms"],
   });
 
+export const createBoardSchema = z.object({
+  name: z.string().nonempty("Insira um nome"),
+});
+
 export type LoginData = z.infer<typeof loginSchema>;
 export type RegisterData = z.infer<typeof registerSchema>;
+export type CreateBoardData = z.infer<typeof createBoardSchema>;
