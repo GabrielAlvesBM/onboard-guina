@@ -1,0 +1,15 @@
+query ListBoards($pageInput: PageInput!) {
+  boards(pageInput: $pageInput) {
+    count
+    nodes {
+      id
+      name
+    }
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      limit
+      offset
+    }
+  }
+}
