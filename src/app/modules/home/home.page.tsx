@@ -26,29 +26,26 @@ const HomePage = () => {
   const getPaginationButtons = () => {
     const pageNumbers: (number | string)[] = [];
 
-    const startPage = Math.max(currentPage - 2, 1);
-    const endPage = Math.min(currentPage + 2, totalPages);
+    if (totalPages <= 5) {
+      return Array.from({ length: totalPages }, (_, i) => i + 1);
+    }
 
-    if (totalPages > 5) {
-      if (currentPage > 3) {
-        pageNumbers.push(1);
-        pageNumbers.push("...");
-      }
+    const delta = 2;
+    const left = Math.max(currentPage - delta, 1);
+    const right = Math.min(currentPage + delta, totalPages);
 
-      for (let i = startPage; i <= endPage; i++) {
-        pageNumbers.push(i);
-      }
+    if (left > 1) {
+      pageNumbers.push(1);
+      if (left > 2) pageNumbers.push("...");
+    }
 
-      if (currentPage < totalPages - 1) {
-        if (currentPage < totalPages - 3) {
-          pageNumbers.push("...");
-        }
-        pageNumbers.push(totalPages);
-      }
-    } else {
-      for (let i = 1; i <= totalPages; i++) {
-        pageNumbers.push(i);
-      }
+    for (let i = left; i <= right; i++) {
+      pageNumbers.push(i);
+    }
+
+    if (right < totalPages) {
+      if (right < totalPages - 1) pageNumbers.push("...");
+      pageNumbers.push(totalPages);
     }
 
     return pageNumbers;
