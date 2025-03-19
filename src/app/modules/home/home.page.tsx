@@ -7,12 +7,13 @@ import CreateBoardFrame from "@/atomic/mol.create-board-frame";
 import { ArrowOutlineRight, ArrowOutlineLeft } from "@/atomic/icons/arrow";
 import * as homeStrings from "./home.strings";
 import { useListBoards } from "@/app/domain/board/list-boards.use-case";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const HomePage = () => {
   const [offset, setOffset] = useState(0);
   const limit = 7;
 
-  const { boardsData } = useListBoards({
+  const { boardsData, loading } = useListBoards({
     variables: { pageInput: { limit, offset } },
     onError(error) {
       console.error(error);
@@ -57,7 +58,13 @@ const HomePage = () => {
         {homeStrings.TITLE}
       </Text>
 
-      {totalBoards !== 0 ? (
+      {loading ? (
+        <div className="flex flex-wrap items-center justify-center gap-sm p-lg rounded-md bg-white">
+          {[...Array(limit + 1)].map((_, index) => (
+            <Skeleton key={index} className="h-[250px] w-[250px] rounded-md" />
+          ))}
+        </div>
+      ) : totalBoards !== 0 ? (
         <div className="flex flex-wrap items-center justify-center gap-sm p-lg rounded-md bg-white">
           <CreateBoardFrame />
 
