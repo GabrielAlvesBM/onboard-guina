@@ -24,6 +24,7 @@
 
     "baseUrl": "./src",
     "paths": {
+      "@/*": ["./*"],
       "@/atomic/*": ["atomic/*"],
       "@/apollo/*": ["apollo/*"],
       "@/app/*": ["app/*"]
