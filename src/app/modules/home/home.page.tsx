@@ -69,7 +69,7 @@ const HomePage = () => {
           <CreateBoardFrame />
 
           {boardsData?.boards.nodes.map((board) => (
-            <BoardFrame key={board.id} title={board.name} id={board.id} />
+            <BoardFrame key={board.id} board={board} />
           ))}
 
           <nav className="flex gap-2xs justify-center w-full">
