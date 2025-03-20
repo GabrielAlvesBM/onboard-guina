@@ -7,7 +7,7 @@ import CreateBoardFrame from "@/atomic/mol.create-board-frame";
 import { ArrowOutlineRight, ArrowOutlineLeft } from "@/atomic/icons/arrow";
 import * as homeStrings from "./home.strings";
 import { useListBoards } from "@/app/domain/board/list-boards.use-case";
-import { Skeleton } from "@/components/ui/skeleton";
+import Skeleton from "@/atomic/atm.skeleton";
 
 const HomePage = () => {
   const [offset, setOffset] = useState(0);
