@@ -33,12 +33,13 @@ export interface CaptionData {
 
 export interface Field {
   name: string;
-  label: string;
+  label?: string;
   placeholder?: string;
   status?: InputStatus;
   caption?: CaptionData;
   infoIcon?: string;
   type?: string;
+  defaultValue?: string;
 }
 
 export interface Fields<T> extends Field {
@@ -91,6 +92,7 @@ export interface TextInputProps {
   infoIcon?: string;
   clearButton?: boolean;
   icon?: ReactNode;
+  defaultValue?: string;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 

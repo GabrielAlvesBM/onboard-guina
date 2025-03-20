@@ -21,6 +21,7 @@ export const TextFormFields: FC<FormFieldsProps> = ({ fields }) => {
           status={errors[field.name] ? "error" : field.status}
           infoIcon={field.infoIcon}
           {...register(field.name)}
+          defaultValue={field.defaultValue}
           caption={
             errors[field.name]
               ? {

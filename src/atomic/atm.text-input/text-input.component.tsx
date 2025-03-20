@@ -20,11 +20,12 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
       clearButton = true,
       onChange,
       icon,
+      defaultValue,
       ...props
     },
     ref
   ) => {
-    const [inputValue, setInputValue] = useState("");
+    const [inputValue, setInputValue] = useState(defaultValue);
     const [isFocused, setIsFocused] = useState(false);
 
     return (
