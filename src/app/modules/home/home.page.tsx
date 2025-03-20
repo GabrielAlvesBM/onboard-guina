@@ -61,8 +61,8 @@ const HomePage = () => {
         <div className="flex flex-wrap items-center justify-center gap-sm p-lg rounded-md bg-white">
           <CreateBoardFrame />
 
-          {boardsData?.boards.nodes.map((board, index) => (
-            <BoardFrame key={index} title={board.name} />
+          {boardsData?.boards.nodes.map((board) => (
+            <BoardFrame key={board.id} title={board.name} id={board.id} />
           ))}
 
           <nav className="flex gap-2xs justify-center w-full">
