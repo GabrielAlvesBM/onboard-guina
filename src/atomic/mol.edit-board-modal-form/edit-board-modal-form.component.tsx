@@ -30,7 +30,7 @@ const EditBoardModalForm: FC<EditBoardModalProps> = ({
   });
 
   const handleSubmit = (data: EditBoardData) => {
-    editBoard({ data: data });
+    editBoard({ data });
   };
 
   return (
