@@ -8,6 +8,7 @@ import { ArrowOutlineRight, ArrowOutlineLeft } from "@/atomic/icons/arrow";
 import * as homeStrings from "./home.strings";
 import { useListBoards } from "@/app/domain/board/list-boards.use-case";
 import Skeleton from "@/atomic/atm.skeleton";
+import { toast } from "sonner";
 
 const HomePage = () => {
   const [offset, setOffset] = useState(0);
@@ -16,7 +17,9 @@ const HomePage = () => {
   const { boardsData, loading } = useListBoards({
     variables: { pageInput: { limit, offset } },
     onError(error) {
-      console.error(error);
+      toast.error(homeStrings.LIST_ERROR, {
+        description: error.message,
+      });
     },
   });
 

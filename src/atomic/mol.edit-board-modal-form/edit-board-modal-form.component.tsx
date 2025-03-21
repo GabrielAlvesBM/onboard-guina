@@ -6,6 +6,7 @@ import Form from "../org.form";
 import * as editBoardModalFormStrings from "./edit-board-modal-form.strings";
 import { editBoardSchema, EditBoardData } from "../org.form/form.schemas";
 import { useEditBoard } from "@/app/domain/board/edit-board.use-case";
+import { toast } from "sonner";
 
 interface EditBoardModalProps {
   defaultValues: EditBoardData;
@@ -22,6 +23,7 @@ const EditBoardModalForm: FC<EditBoardModalProps> = ({
 
   const { editBoard, loading } = useEditBoard({
     onCompleted() {
+      toast.success(editBoardModalFormStrings.EDIT_SUCCESS);
       onClose();
     },
     onError(error) {

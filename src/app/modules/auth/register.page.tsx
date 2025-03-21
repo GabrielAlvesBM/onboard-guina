@@ -1,25 +1,26 @@
 import Form from "@/atomic/org.form";
 import Text from "@/atomic/atm.typography";
 import LinkButton from "@/atomic/atm.link-button";
-import Caption from "@/atomic/atm.caption";
 import { registerSchema, RegisterData } from "@/atomic/org.form/form.schemas";
 import { TextFormFields, PasswordFormFields } from "@/atomic/mol.input-fields";
 import CheckboxInput from "@/atomic/atm.checkbox-input";
 import * as registerStrings from "./register.strings";
 import { useRegister } from "@/app/domain/auth/register.use-case";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 const RegisterPage = () => {
   const navigate = useNavigate();
-  const [errorMsg, setErrorMsg] = useState("");
 
   const { register, loading } = useRegister({
     onCompleted() {
+      toast.success(registerStrings.REGISTER_SUCCESS);
       navigate("/");
     },
     onError(error) {
-      setErrorMsg(error.message);
+      toast.error(registerStrings.REGISTER_ERROR, {
+        description: error.message,
+      });
     },
   });
 
@@ -66,7 +67,6 @@ const RegisterPage = () => {
               {registerStrings.POLICIES}
             </LinkButton>
           </CheckboxInput>
-          {errorMsg && <Caption status="error">{errorMsg}</Caption>}
         </Form>
 
         <Text
