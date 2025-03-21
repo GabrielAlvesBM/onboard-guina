@@ -46,4 +46,4 @@ export const CTA_TO_LOGIN = "Já possui uma conta?";
 export const LOGIN = "Faça o Login!";
 
 export const REGISTER_SUCCESS = "Conta criada com sucesso!";
-export const REGISTER_ERROR = "Erro ao criar conta";
+export const REGISTER_ERROR = "Erro ao criar conta.";
