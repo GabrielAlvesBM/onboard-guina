@@ -1,4 +1,5 @@
 import { FC, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Text from "../atm.typography";
 import EditBoardModalForm from "../mol.edit-board-modal-form";
 import DeleteBoardModal from "../mol.delete-board-modal";
@@ -14,16 +15,16 @@ interface BoardFrameProps {
 }
 
 const BoardFrame: FC<BoardFrameProps> = ({ board, refetch }) => {
+  const navigate = useNavigate();
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [ísDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
-  const openEditModal = () => {
-    setIsEditModalOpen(true);
-  };
-
   return (
     <>
-      <article className="relative flex flex-col gap-sm w-full max-w-[250px] border border-light rounded-sm overflow-hidden cursor-pointer">
+      <article
+        className="relative flex flex-col gap-sm w-full max-w-[250px] border border-light rounded-sm overflow-hidden cursor-pointer"
+        onClick={() => navigate(`/board/${board.id}`)}
+      >
         <img
           src="/board-placeholder-image.png"
           alt={board.name}
@@ -36,11 +37,21 @@ const BoardFrame: FC<BoardFrameProps> = ({ board, refetch }) => {
         </div>
 
         <div className="absolute flex gap-3xs bottom-2xs right-2xs">
-          <span onClick={openEditModal}>
+          <span
+            onClick={(event) => {
+              event.stopPropagation();
+              setIsEditModalOpen(true);
+            }}
+          >
             <EditOutline />
           </span>
 
-          <span onClick={() => setIsDeleteModalOpen(true)}>
+          <span
+            onClick={(event) => {
+              event.stopPropagation();
+              setIsDeleteModalOpen(true);
+            }}
+          >
             <DeleteOutline />
           </span>
         </div>

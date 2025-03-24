@@ -15,7 +15,7 @@ const AuthGuard = () => {
   return (
     <>
       <div className="flex flex-col h-screen">
-        <nav className="flex items-center justify-between gap-md py-2xs px-lg shadow-md sm:px-xl">
+        <nav className="fixed w-full flex items-center justify-between gap-md py-2xs px-lg shadow-md bg-white sm:px-xl">
           <img src="/instaq-logo.png" alt="Logo Instaq" className="w-lg h-lg" />
 
           <Button variant="link" className="flex gap-2xs items-center">
@@ -25,8 +25,10 @@ const AuthGuard = () => {
           </Button>
         </nav>
 
-        <main className="flex-1 bg-x-light">
-          <Outlet />
+        <main className="flex-1 bg-x-light mt-md">
+          <div className="overflow-x-auto">
+            <Outlet />
+          </div>
         </main>
       </div>
     </>
