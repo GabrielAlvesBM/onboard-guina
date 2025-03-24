@@ -1,4 +1,9 @@
-export const BUTTON_LABEL_EDIT_BOARD = "Editar Projeto";
-export const BUTTON_LABEL_EDIT_BOARD_LOADING = "Carregando...";
-
-export const EDIT_SUCCESS = "Editado com sucesso!";
+export const editBoardModalFormStrings = {
+  BUTTON_LABELS: {
+    EDIT_BOARD: "Editar Projeto",
+    LOADING: "Carregando...",
+  },
+  MESSAGES: {
+    EDIT_SUCCESS: "Editado com sucesso!",
+  },
+};

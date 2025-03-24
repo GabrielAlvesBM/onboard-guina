@@ -3,7 +3,7 @@ import Caption from "../atm.caption";
 import { TextFormFields } from "../mol.input-fields";
 import Modal from "../mol.modal";
 import Form from "../org.form";
-import * as createBoardModalFormStrings from "./create-board-modal-form.strings";
+import { createBoardModalFormStrings } from "./create-board-modal-form.strings";
 import { useCreateBoard } from "@/app/domain/board/create-board.use-case";
 import { createBoardSchema, CreateBoardData } from "../org.form/form.schemas";
 
@@ -38,8 +38,8 @@ const CreateBoardModalForm: FC<ModalProps> = ({ isOpen, onClose }) => {
         buttonDisabled={loading}
         buttonLabel={
           loading
-            ? createBoardModalFormStrings.BUTTON_LABEL_CREATE_BOARD_LOADING
-            : createBoardModalFormStrings.BUTTON_LABEL_CREATE_BOARD
+            ? createBoardModalFormStrings.BUTTON_LABELS.LOADING
+            : createBoardModalFormStrings.BUTTON_LABELS.CREATE_BOARD
         }
       >
         <TextFormFields fields={createBoardModalFormStrings.TEXT_FIELDS} />

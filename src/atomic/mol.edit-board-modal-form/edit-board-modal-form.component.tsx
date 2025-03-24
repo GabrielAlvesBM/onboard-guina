@@ -3,7 +3,7 @@ import Caption from "../atm.caption";
 import { TextFormFields } from "../mol.input-fields";
 import Modal from "../mol.modal";
 import Form from "../org.form";
-import * as editBoardModalFormStrings from "./edit-board-modal-form.strings";
+import { editBoardModalFormStrings } from "./edit-board-modal-form.strings";
 import { editBoardSchema, EditBoardData } from "../org.form/form.schemas";
 import { useEditBoard } from "@/app/domain/board/edit-board.use-case";
 import { toast } from "sonner";
@@ -23,7 +23,7 @@ const EditBoardModalForm: FC<EditBoardModalProps> = ({
 
   const { editBoard, loading } = useEditBoard({
     onCompleted() {
-      toast.success(editBoardModalFormStrings.EDIT_SUCCESS);
+      toast.success(editBoardModalFormStrings.MESSAGES.EDIT_SUCCESS);
       onClose();
     },
     onError(error) {
@@ -43,8 +43,8 @@ const EditBoardModalForm: FC<EditBoardModalProps> = ({
         buttonDisabled={loading}
         buttonLabel={
           loading
-            ? editBoardModalFormStrings.BUTTON_LABEL_EDIT_BOARD_LOADING
-            : editBoardModalFormStrings.BUTTON_LABEL_EDIT_BOARD
+            ? editBoardModalFormStrings.BUTTON_LABELS.LOADING
+            : editBoardModalFormStrings.BUTTON_LABELS.EDIT_BOARD
         }
       >
         <TextFormFields

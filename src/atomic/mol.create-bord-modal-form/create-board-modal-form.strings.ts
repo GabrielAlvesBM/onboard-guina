@@ -1,11 +1,14 @@
-export const TEXT_FIELDS = [
-  {
-    name: "name",
-    label: "Nome",
-    type: "text",
-    placeholder: "Nome do projeto",
+export const createBoardModalFormStrings = {
+  TEXT_FIELDS: [
+    {
+      name: "name",
+      label: "Nome",
+      type: "text",
+      placeholder: "Nome do projeto",
+    },
+  ],
+  BUTTON_LABELS: {
+    CREATE_BOARD: "Criar Projeto",
+    LOADING: "Carregando...",
   },
-];
-
-export const BUTTON_LABEL_CREATE_BOARD = "Criar Projeto";
-export const BUTTON_LABEL_CREATE_BOARD_LOADING = "Carregando...";
+};

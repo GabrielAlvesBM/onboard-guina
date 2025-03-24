@@ -2,7 +2,7 @@ import { FC } from "react";
 import Text from "../atm.typography";
 import Button from "../atm.button";
 import Modal from "../mol.modal";
-import * as deleteBoardModalStrings from "./delete-board-modal.strings";
+import { deleteBoardModalStrings } from "./delete-board-modal.strings";
 import { useDeleteBoard } from "@/app/domain/board/delete-board.use-case";
 import { toast } from "sonner";
 

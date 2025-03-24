@@ -3,7 +3,7 @@ import Text from "../atm.typography";
 import Button from "../atm.button";
 import CreateBoardModalForm from "../mol.create-bord-modal-form";
 import { PlaceholderDefault } from "../icons/placeholder";
-import * as noProjectMessageStrings from "./empty-project-message.strings";
+import { noProjectMessageStrings } from "./empty-project-message.strings";
 
 const EmptyProjectMessage = () => {
   const [isCreateBoardModalOpen, setIsCreateBoardModalOpen] = useState(false);

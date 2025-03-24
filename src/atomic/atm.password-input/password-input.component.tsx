@@ -2,7 +2,7 @@ import { useState, forwardRef } from "react";
 import TextInput from "../atm.text-input";
 import { ShowOutline, HideOutline } from "../icons/show";
 import { PasswordInputProps } from "../shared/types";
-import { SHOW_PASSWORD_LABEL, HIDE_PASSWORD_LABEL } from "./password.strings";
+import { passwordInputsStrings } from "./password.strings";
 
 const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
   ({ status, label, placeholder, caption, infoIcon, ...props }, ref) => {
@@ -13,7 +13,11 @@ const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
         type="button"
         className="text-x-dark"
         onClick={() => setShowPassword((prev) => !prev)}
-        aria-label={showPassword ? HIDE_PASSWORD_LABEL : SHOW_PASSWORD_LABEL}
+        aria-label={
+          showPassword
+            ? passwordInputsStrings.HIDE_PASSWORD_LABEL
+            : passwordInputsStrings.SHOW_PASSWORD_LABEL
+        }
       >
         {showPassword ? <HideOutline /> : <ShowOutline />}
       </button>

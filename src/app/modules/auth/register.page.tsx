@@ -4,7 +4,7 @@ import LinkButton from "@/atomic/atm.link-button";
 import { registerSchema, RegisterData } from "@/atomic/org.form/form.schemas";
 import { TextFormFields, PasswordFormFields } from "@/atomic/mol.input-fields";
 import CheckboxInput from "@/atomic/atm.checkbox-input";
-import * as registerStrings from "./register.strings";
+import { registerStrings } from "./register.strings";
 import { useRegister } from "@/app/domain/auth/register.use-case";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
