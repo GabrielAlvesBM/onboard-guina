@@ -16,7 +16,7 @@ export const useListBoards = ({
   onCompleted,
   onError,
 }: UseListBoardsProps) => {
-  const { data, loading } = useQuery(ListBoardsDocument, {
+  const { data, loading, refetch } = useQuery(ListBoardsDocument, {
     variables: variables,
     onCompleted,
     onError,
@@ -25,5 +25,6 @@ export const useListBoards = ({
   return {
     boardsData: data,
     loading,
+    refetch,
   };
 };
