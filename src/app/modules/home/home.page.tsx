@@ -14,7 +14,7 @@ const HomePage = () => {
   const [offset, setOffset] = useState(0);
   const limit = 7;
 
-  const { boardsData, loading } = useListBoards({
+  const { boardsData, loading, refetch } = useListBoards({
     variables: { pageInput: { limit, offset } },
     onError(error) {
       toast.error(homeStrings.LIST_ERROR, {
@@ -72,7 +72,7 @@ const HomePage = () => {
           <CreateBoardFrame />
 
           {boardsData?.boards.nodes.map((board) => (
-            <BoardFrame key={board.id} board={board} />
+            <BoardFrame key={board.id} board={board} refetch={refetch} />
           ))}
 
           <nav className="flex gap-2xs justify-center w-full">

@@ -1,17 +1,21 @@
 import { FC, useState } from "react";
 import Text from "../atm.typography";
 import EditBoardModalForm from "../mol.edit-board-modal-form";
+import DeleteBoardModal from "../mol.delete-board-modal";
 import { EditOutline } from "../icons/edit";
+import { DeleteOutline } from "../icons/delete";
 
 interface BoardFrameProps {
   board: {
     id: string;
     name: string;
   };
+  refetch: () => void;
 }
 
-const BoardFrame: FC<BoardFrameProps> = ({ board }) => {
+const BoardFrame: FC<BoardFrameProps> = ({ board, refetch }) => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [ísDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
   const openEditModal = () => {
     setIsEditModalOpen(true);
@@ -31,9 +35,13 @@ const BoardFrame: FC<BoardFrameProps> = ({ board }) => {
           <Text variant="body1">Criado em xx/xx/xxxx</Text>
         </div>
 
-        <div className="absolute bottom-2xs right-2xs">
+        <div className="absolute flex gap-3xs bottom-2xs right-2xs">
           <span onClick={openEditModal}>
             <EditOutline />
+          </span>
+
+          <span onClick={() => setIsDeleteModalOpen(true)}>
+            <DeleteOutline />
           </span>
         </div>
       </article>
@@ -42,6 +50,13 @@ const BoardFrame: FC<BoardFrameProps> = ({ board }) => {
         isOpen={isEditModalOpen}
         onClose={() => setIsEditModalOpen(false)}
         defaultValues={board}
+      />
+
+      <DeleteBoardModal
+        isOpen={ísDeleteModalOpen}
+        onClose={() => setIsDeleteModalOpen(false)}
+        id={board.id}
+        refetch={refetch}
       />
     </>
   );
