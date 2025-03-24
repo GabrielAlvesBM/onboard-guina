@@ -1,4 +1,5 @@
 import { FC, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Text from "../atm.typography";
 import EditBoardModalForm from "../mol.edit-board-modal-form";
 import { EditOutline } from "../icons/edit";
@@ -11,15 +12,15 @@ interface BoardFrameProps {
 }
 
 const BoardFrame: FC<BoardFrameProps> = ({ board }) => {
+  const navigate = useNavigate();
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-
-  const openEditModal = () => {
-    setIsEditModalOpen(true);
-  };
 
   return (
     <>
-      <article className="relative flex flex-col gap-sm w-full max-w-[250px] border border-light rounded-sm overflow-hidden cursor-pointer">
+      <article
+        className="relative flex flex-col gap-sm w-full max-w-[250px] border border-light rounded-sm overflow-hidden cursor-pointer"
+        onClick={() => navigate(`/board/${board.id}`)}
+      >
         <img
           src="/board-placeholder-image.png"
           alt={board.name}
@@ -32,7 +33,12 @@ const BoardFrame: FC<BoardFrameProps> = ({ board }) => {
         </div>
 
         <div className="absolute bottom-2xs right-2xs">
-          <span onClick={openEditModal}>
+          <span
+            onClick={(event) => {
+              event.stopPropagation();
+              setIsEditModalOpen(true);
+            }}
+          >
             <EditOutline />
           </span>
         </div>
