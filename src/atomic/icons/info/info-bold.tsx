@@ -1,4 +1,4 @@
-const Info = () => {
+const InfoBold = () => {
   return (
     <svg
       className="overflow-visible"
@@ -13,4 +13,4 @@ const Info = () => {
   );
 };
 
-export default Info;
+export default InfoBold;
