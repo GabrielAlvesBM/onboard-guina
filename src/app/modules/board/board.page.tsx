@@ -17,10 +17,10 @@ const BoardPage = () => {
       </Text>
 
       <div className="flex gap-sm overflow-x-auto">
-        <Column CardColumn={"TO_DO"} />
-        <Column CardColumn={"IN_PROGRESS"} />
-        <Column CardColumn={"IN_REVIEW"} />
-        <Column CardColumn={"DONE"} />
+        <Column CardColumn="TO_DO" />
+        <Column CardColumn="IN_PROGRESS" />
+        <Column CardColumn="IN_REVIEW" />
+        <Column CardColumn="DONE" />
       </div>
     </div>
   );
