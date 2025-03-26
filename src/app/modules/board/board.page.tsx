@@ -4,6 +4,8 @@ import Column from "@/atomic/mol.column";
 import { useQueryBoard } from "@/app/domain/board/query-board.use-case";
 import { CardColumns } from "@/atomic/shared/types";
 
+const columns: CardColumns[] = ["TO_DO", "IN_PROGRESS", "IN_REVIEW", "DONE"];
+
 const BoardPage = () => {
   const { boardId } = useParams<{ boardId: string }>();
 
@@ -11,7 +13,6 @@ const BoardPage = () => {
     variables: { boardId: boardId || "" },
   });
 
-  const columns: CardColumns[] = ["TO_DO", "IN_PROGRESS", "IN_REVIEW", "DONE"];
   const cards = boardData?.board.cards;
 
   return (
