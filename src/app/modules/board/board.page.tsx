@@ -22,9 +22,9 @@ const BoardPage = () => {
       </Text>
 
       <div className="flex gap-sm overflow-x-auto">
-        {columns.map((column, index) => (
+        {columns.map((column) => (
           <Column
-            key={index}
+            key={column}
             CardColumn={column}
             cards={cards?.filter((card) => card.column === column)}
           />
