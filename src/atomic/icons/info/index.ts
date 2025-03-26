@@ -1,2 +1,2 @@
 export { default as InfoBold } from "./info-bold";
-export { default as InfoOutline16 } from "./info-outline-16";
+export { default as InfoOutline } from "./info-outline";

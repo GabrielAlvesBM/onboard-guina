@@ -1,7 +1,7 @@
 import { FC } from "react";
 import Text from "../atm.typography";
-import { InfoOutline16 } from "../icons/info";
-import { EditOutline16 } from "../icons/edit";
+import { InfoOutline } from "../icons/info";
+import { EditOutline } from "../icons/edit";
 import { Card as CardType } from "@/app/data/graphql/generated";
 import { useUserStore } from "@/app/stores/user.store";
 
@@ -28,11 +28,11 @@ const Card: FC<CardProps> = ({ card }) => {
           variant="body2"
           className="flex items-center gap-3xs whitespace-nowrap"
         >
-          <EditOutline16 /> 0 Comentários
+          <EditOutline size={16} /> 0 Comentários
         </Text>
 
         <Text variant="body2" className="flex items-center gap-3xs">
-          <InfoOutline16 /> {date}
+          <InfoOutline size={16} /> {date}
         </Text>
       </div>
     </div>
