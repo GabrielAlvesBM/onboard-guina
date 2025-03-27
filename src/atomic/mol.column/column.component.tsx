@@ -16,7 +16,7 @@ interface ColumnProps {
 const Column: FC<ColumnProps> = ({ CardColumn, cards }) => {
   return (
     <>
-      <div className="flex flex-col justify-between gap-sm min-w-[330px] h-[660px] p-sm rounded-lg bg-white">
+      <div className="flex flex-col justify-between gap-sm min-w-[330px] h-full max-h-[1500px] p-sm rounded-lg bg-white">
         <div className="flex justify-between items-center">
           <Text
             variant="body1"
