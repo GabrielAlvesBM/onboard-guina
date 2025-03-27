@@ -24,8 +24,11 @@ const BoardPage = () => {
 
           <div className="flex gap-sm">
             {columns.map((_, index) => (
-              <div className="w-[330px] h-[660px] p-sm rounded-lg bg-white">
-                <Skeleton key={index} className="size-full" />
+              <div
+                key={index}
+                className="w-[330px] h-[660px] p-sm rounded-lg bg-white"
+              >
+                <Skeleton className="size-full" />
               </div>
             ))}
           </div>
