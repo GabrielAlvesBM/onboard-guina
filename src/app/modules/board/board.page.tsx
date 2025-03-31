@@ -19,7 +19,7 @@ const columns: CardColumns[] = Object.values(CardColumns);
 const BoardPage = () => {
   const { boardId } = useParams<{ boardId: string }>();
 
-  const { boardData, loading } = useQueryBoard({
+  const { boardData, loading, refetch } = useQueryBoard({
     variables: { boardId: boardId || "" },
   });
 
@@ -146,6 +146,7 @@ const BoardPage = () => {
                   CardColumn={column}
                   cards={cards.filter((card) => card.column === column)}
                   boardId={boardData!.board.id}
+                  refetch={refetch}
                 />
               ))}
             </div>

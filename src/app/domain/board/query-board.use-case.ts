@@ -16,7 +16,7 @@ export const useQueryBoard = ({
   onCompleted,
   onError,
 }: UseQueryBoardProps) => {
-  const { data, loading } = useQuery(QueryBoardDocument, {
+  const { data, loading, refetch } = useQuery(QueryBoardDocument, {
     variables: variables,
     onCompleted,
     onError,
@@ -25,5 +25,6 @@ export const useQueryBoard = ({
   return {
     boardData: data,
     loading,
+    refetch,
   };
 };

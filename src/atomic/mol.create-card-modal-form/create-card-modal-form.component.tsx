@@ -13,6 +13,7 @@ interface ModalProps {
   onClose: () => void;
   boardId: string;
   column: CardColumns;
+  refetch: () => void;
 }
 
 const CreateCardModalForm: FC<ModalProps> = ({
@@ -20,10 +21,13 @@ const CreateCardModalForm: FC<ModalProps> = ({
   onClose,
   boardId,
   column,
+  refetch,
 }) => {
   const { createCard, loading } = useCreateCard({
     onCompleted() {
-      window.location.reload();
+      refetch();
+      onClose();
+      toast.success(createCardModalFormStrings.MESSAGES.CREATE_CARD_SUCCESS);
     },
     onError(error) {
       toast.error(error.message);

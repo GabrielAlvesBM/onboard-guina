@@ -11,4 +11,7 @@ export const createCardModalFormStrings = {
     CREATE_CARD: "Criar tarefa",
     LOADING: "Carregando...",
   },
+  MESSAGES: {
+    CREATE_CARD_SUCCESS: "Tarefa criada com sucesso!",
+  },
 };

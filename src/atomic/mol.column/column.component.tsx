@@ -17,9 +17,15 @@ interface ColumnProps {
   CardColumn: CardColumns;
   cards?: CardType[];
   boardId: string;
+  refetch: () => void;
 }
 
-const Column: FC<ColumnProps> = ({ CardColumn, cards = [], boardId }) => {
+const Column: FC<ColumnProps> = ({
+  CardColumn,
+  cards = [],
+  boardId,
+  refetch,
+}) => {
   const [isCreateCardModalOpen, setIsCreateCardModalOpen] = useState(false);
 
   const { setNodeRef } = useDroppable({
@@ -69,6 +75,7 @@ const Column: FC<ColumnProps> = ({ CardColumn, cards = [], boardId }) => {
         onClose={() => setIsCreateCardModalOpen(false)}
         boardId={boardId}
         column={CardColumn}
+        refetch={refetch}
       />
     </>
   );
