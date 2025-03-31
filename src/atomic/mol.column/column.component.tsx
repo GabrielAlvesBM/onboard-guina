@@ -5,15 +5,23 @@ import Button from "../atm.button";
 import Card from "../mol.card";
 import { SignalMore, SignalAdd } from "../icons/signal";
 import * as columnStrings from "./column.strings";
-import { CardColumns } from "../shared/types";
-import { Card as CardType } from "@/app/data/graphql/generated";
+import { Card as CardType, CardColumns } from "@/app/data/graphql/generated";
+import { useDroppable } from "@dnd-kit/core";
+import {
+  SortableContext,
+  verticalListSortingStrategy,
+} from "@dnd-kit/sortable";
 
 interface ColumnProps {
   CardColumn: CardColumns;
   cards?: CardType[];
 }
 
-const Column: FC<ColumnProps> = ({ CardColumn, cards }) => {
+const Column: FC<ColumnProps> = ({ CardColumn, cards = [] }) => {
+  const { setNodeRef } = useDroppable({
+    id: CardColumn,
+  });
+
   return (
     <>
       <div className="flex flex-col justify-between gap-sm min-w-[330px] h-full max-h-[1500px] p-sm rounded-lg bg-white">
@@ -29,10 +37,18 @@ const Column: FC<ColumnProps> = ({ CardColumn, cards }) => {
           </span>
         </div>
 
-        <div className="flex flex-col gap-2xs h-full p-xs rounded-sm shadow-inner overflow-y-auto bg-x-light">
-          {cards?.map((card) => (
-            <Card key={card.id} card={card} />
-          ))}
+        <div
+          ref={setNodeRef}
+          className="flex flex-col gap-2xs h-full p-xs rounded-sm shadow-inner overflow-y-auto bg-x-light"
+        >
+          <SortableContext
+            items={cards.map((card) => card.id)}
+            strategy={verticalListSortingStrategy}
+          >
+            {cards.map((card) => (
+              <Card key={card.id} card={card} column={CardColumn} />
+            ))}
+          </SortableContext>
         </div>
 
         <Button variant="link" className="flex gap-2xs mx-auto">

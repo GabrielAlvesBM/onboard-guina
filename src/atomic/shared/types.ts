@@ -25,7 +25,6 @@ export type ButtonVariant =
   | "cta"
   | "link";
 export type TargetType = "_self" | "_blank" | "_parent" | "_top";
-export type CardColumns = "TO_DO" | "IN_PROGRESS" | "IN_REVIEW" | "DONE";
 
 export interface CaptionData {
   text: string;
