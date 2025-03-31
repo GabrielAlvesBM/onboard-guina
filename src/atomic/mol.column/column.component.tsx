@@ -1,8 +1,9 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { columnVariants } from "./column.style";
 import Text from "../atm.typography";
 import Button from "../atm.button";
 import Card from "../mol.card";
+import CreateCardModalForm from "../mol.create-card-modal-form";
 import { SignalMore, SignalAdd } from "../icons/signal";
 import * as columnStrings from "./column.strings";
 import { Card as CardType, CardColumns } from "@/app/data/graphql/generated";
@@ -15,9 +16,12 @@ import {
 interface ColumnProps {
   CardColumn: CardColumns;
   cards?: CardType[];
+  boardId: string;
 }
 
-const Column: FC<ColumnProps> = ({ CardColumn, cards = [] }) => {
+const Column: FC<ColumnProps> = ({ CardColumn, cards = [], boardId }) => {
+  const [isCreateCardModalOpen, setIsCreateCardModalOpen] = useState(false);
+
   const { setNodeRef } = useDroppable({
     id: CardColumn,
   });
@@ -51,10 +55,21 @@ const Column: FC<ColumnProps> = ({ CardColumn, cards = [] }) => {
           </SortableContext>
         </div>
 
-        <Button variant="link" className="flex gap-2xs mx-auto">
-          <SignalAdd /> {columnStrings.ADD_TASK}
+        <Button
+          variant="link"
+          className="flex gap-2xs mx-auto"
+          onClick={() => setIsCreateCardModalOpen(true)}
+        >
+          <SignalAdd /> {columnStrings.ADD_CARD}
         </Button>
       </div>
+
+      <CreateCardModalForm
+        isOpen={isCreateCardModalOpen}
+        onClose={() => setIsCreateCardModalOpen(false)}
+        boardId={boardId}
+        column={CardColumn}
+      />
     </>
   );
 };

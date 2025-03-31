@@ -145,6 +145,7 @@ const BoardPage = () => {
                   key={column}
                   CardColumn={column}
                   cards={cards.filter((card) => card.column === column)}
+                  boardId={boardData!.board.id}
                 />
               ))}
             </div>
