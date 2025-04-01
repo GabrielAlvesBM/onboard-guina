@@ -1,9 +1,9 @@
-const DeleteOutline = () => {
+const DeleteOutline = ({ size = 24 }: { size?: number }) => {
   return (
     <svg
       className="overflow-visible"
-      width="24"
-      height="24"
+      width={size}
+      height={size}
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"

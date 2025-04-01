@@ -56,7 +56,12 @@ const Column: FC<ColumnProps> = ({
             strategy={verticalListSortingStrategy}
           >
             {cards.map((card) => (
-              <Card key={card.id} card={card} column={CardColumn} />
+              <Card
+                key={card.id}
+                card={card}
+                column={CardColumn}
+                refetch={refetch}
+              />
             ))}
           </SortableContext>
         </div>
