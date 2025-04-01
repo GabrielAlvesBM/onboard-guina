@@ -1,5 +1,6 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import Text from "../atm.typography";
+import UpdateCardModalForm from "../mol.update-card-modal-form";
 import { InfoOutline } from "../icons/info";
 import { EditOutline } from "../icons/edit";
 import { Card as CardType, CardColumns } from "@/app/data/graphql/generated";
@@ -13,6 +14,10 @@ interface CardProps {
 }
 
 const Card: FC<CardProps> = ({ card, column }) => {
+  const { name } = useUserStore();
+  const date = new Date(card.createdAt).toLocaleDateString("pt-br");
+  const [isOpenUpdateModal, setIsOpenUpdateModal] = useState(false);
+
   const {
     attributes,
     listeners,
@@ -30,37 +35,50 @@ const Card: FC<CardProps> = ({ card, column }) => {
     opacity: isDragging ? 0.5 : 1,
   };
 
-  const { name } = useUserStore();
-  const date = new Date(card.createdAt).toLocaleDateString("pt-br");
-
   return (
-    <div
-      ref={setNodeRef}
-      style={style}
-      {...attributes}
-      {...listeners}
-      className="flex flex-col gap-xs p-xs text-left rounded-md cursor-pointer bg-white"
-    >
-      <div className="flex flex-col gap-2xs">
-        <Text variant="h4">{card.name}</Text>
-        <Text variant="body1" className="flex items-center gap-3xs">
-          <img src="/avatar1.png" alt="Avatar 1" className="w-xs" /> {name}
-        </Text>
+    <>
+      <div
+        ref={setNodeRef}
+        style={style}
+        {...attributes}
+        {...listeners}
+        className="flex flex-col gap-xs p-xs text-left rounded-md cursor-pointer bg-white"
+      >
+        <div className="flex flex-col gap-2xs">
+          <Text variant="h4">{card.name}</Text>
+          <Text variant="body1" className="flex items-center gap-3xs">
+            <img src="/avatar1.png" alt="Avatar 1" className="w-xs" /> {name}
+          </Text>
+        </div>
+
+        <div className="flex gap-xs justify-between">
+          <Text
+            variant="body2"
+            className="flex items-center gap-3xs whitespace-nowrap"
+          >
+            <span
+              onPointerDown={(event) => {
+                event.stopPropagation();
+                setIsOpenUpdateModal(true);
+              }}
+            >
+              <EditOutline size={16} />
+            </span>{" "}
+            0 Comentários
+          </Text>
+
+          <Text variant="body2" className="flex items-center gap-3xs">
+            <InfoOutline size={16} /> {date}
+          </Text>
+        </div>
       </div>
 
-      <div className="flex gap-xs justify-between">
-        <Text
-          variant="body2"
-          className="flex items-center gap-3xs whitespace-nowrap"
-        >
-          <EditOutline size={16} /> 0 Comentários
-        </Text>
-
-        <Text variant="body2" className="flex items-center gap-3xs">
-          <InfoOutline size={16} /> {date}
-        </Text>
-      </div>
-    </div>
+      <UpdateCardModalForm
+        isOpen={isOpenUpdateModal}
+        onClose={() => setIsOpenUpdateModal(false)}
+        defaultValues={card}
+      />
+    </>
   );
 };
 
