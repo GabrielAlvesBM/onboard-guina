@@ -14,7 +14,12 @@ import {
 } from "@dnd-kit/core";
 import { arrayMove } from "@dnd-kit/sortable";
 
-const columns: CardColumns[] = Object.values(CardColumns);
+const columns: CardColumns[] = [
+  CardColumns.ToDo,
+  CardColumns.InProgress,
+  CardColumns.InReview,
+  CardColumns.Done,
+];
 
 const BoardPage = () => {
   const { boardId } = useParams<{ boardId: string }>();
