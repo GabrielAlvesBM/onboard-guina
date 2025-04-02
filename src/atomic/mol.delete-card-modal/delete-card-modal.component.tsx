@@ -8,7 +8,7 @@ import { toast } from "sonner";
 
 interface DeleteCardModalProps {
   id: string;
-  refetch: () => void;
+  refetch?: () => void;
   isOpen: boolean;
   onClose: () => void;
 }
@@ -21,7 +21,7 @@ const DeleteCardModal: FC<DeleteCardModalProps> = ({
 }) => {
   const { deleteCard, loading } = useDeleteCard({
     onCompleted() {
-      refetch();
+      refetch?.();
       onClose();
       toast.success(deleteCardModalStrings.MESSAGES.DELETE_SUCCESS);
     },

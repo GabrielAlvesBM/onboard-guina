@@ -13,7 +13,7 @@ import { CSS } from "@dnd-kit/utilities";
 interface CardProps {
   card: CardType;
   column?: CardColumns;
-  refetch: () => void;
+  refetch?: () => void;
 }
 
 const Card: FC<CardProps> = ({ card, column, refetch }) => {
