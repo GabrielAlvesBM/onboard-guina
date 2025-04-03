@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Text from "@/atomic/atm.typography";
+import Skeleton from "@/atomic/atm.skeleton";
 import Column from "@/atomic/mol.column";
 import Card from "@/atomic/mol.card";
 import { useQueryBoard } from "@/app/domain/board/query-board.use-case";
+import { useUpdateCard } from "@/app/domain/board/update-card.use-case";
+import { useUpdateCardOrder } from "@/app/domain/board/update-card-order.use-case";
 import { Card as CardType, CardColumns } from "@/app/data/graphql/generated";
-import Skeleton from "@/atomic/atm.skeleton";
+import { toast } from "sonner";
 import {
   DndContext,
   DragOverlay,
@@ -33,7 +36,18 @@ const BoardPage = () => {
 
   useEffect(() => {
     setCards(boardData?.board.cards || []);
-  }, [boardData]);
+  }, [boardData?.board.cards]);
+
+  const { updateCard } = useUpdateCard({
+    onError(error) {
+      toast.error(error.message);
+    },
+  });
+  const { updateCardOrder } = useUpdateCardOrder({
+    onError(error) {
+      toast.error(error.message);
+    },
+  });
 
   const handleDragStart = (event: DragStartEvent) => {
     const { active } = event;
@@ -44,18 +58,19 @@ const BoardPage = () => {
 
   const handleDragEnd = (event: DragEndEvent) => {
     const { over } = event;
-    setActiveCard(null);
     if (!over || !activeCard) return;
 
     const destinationColumn: CardColumns = over.data.current?.column || over.id;
 
-    const newIndex = getNewIndex(destinationColumn, over);
-
     if (activeCard.column === destinationColumn) {
+      const newIndex = getNewIndex(destinationColumn, over);
+
       moveToSameColumn(destinationColumn, newIndex);
     } else {
-      moveToDifferentColumn(destinationColumn, newIndex);
+      moveToDifferentColumn(destinationColumn);
     }
+
+    setActiveCard(null);
   };
 
   const getNewIndex = (
@@ -92,32 +107,49 @@ const BoardPage = () => {
         ...cards.filter((card) => card.column !== destinationColumn),
         ...newColumnCards,
       ];
+
       setCards(newCards);
+
+      updateCardOrder({
+        data: newColumnCards.map((card, index) => ({
+          id: card.id,
+          order: index,
+        })),
+      });
     }
   };
 
-  const moveToDifferentColumn = (
-    destinationColumn: CardColumns,
-    newIndex: number,
-  ) => {
+  const moveToDifferentColumn = (destinationColumn: CardColumns) => {
     if (!activeCard) return;
 
     const updatedCard = {
       ...activeCard,
       column: destinationColumn,
     };
+
     const filteredCards = cards.filter((card) => card.id !== activeCard.id);
     const newColumnCards = filteredCards.filter(
       (card) => card.column === destinationColumn,
     );
 
-    newColumnCards.splice(newIndex, 0, updatedCard);
+    newColumnCards.unshift(updatedCard);
 
     const newCards = [
-      ...filteredCards.filter((card) => card.column !== destinationColumn),
+      ...cards.filter((card) => card.column !== destinationColumn),
       ...newColumnCards,
     ];
+
     setCards(newCards);
+
+    updateCard({
+      data: {
+        id: activeCard.id,
+        name: activeCard.name,
+        column: destinationColumn,
+      },
+    });
+
+    updateCardOrder({ data: { id: updatedCard.id, order: 0 } });
   };
 
   return (
